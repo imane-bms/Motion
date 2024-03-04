@@ -55,6 +55,7 @@ export const SectionContainer = styled.section`
 // Divs used in User and Feed
 
 export const BaseDiv = styled.div`
+background-color: #fff;
   border-radius: 6px;
   border: 0;
 `;

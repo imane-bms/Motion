@@ -1,12 +1,12 @@
 import { Outlet } from "react-router-dom";
-import Header from "../../../../../Week 3/day-4-online-shop/src/components/Header/Header";
-import Footer from "../../../../../Week 3/day-4-online-shop/src/components/Footer/Footer";
+// import Header from "../../components/Header";
+import Footer from "../../components/Footer";
 
 
 function Layout() {
   return (
     <>
-      <Header />
+      {/* <Header/> */}
       <main>
         <Outlet />
       </main>
