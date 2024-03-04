@@ -7,8 +7,6 @@ export const theme = {
 };
 
 export const GlobalStyle = createGlobalStyle`
-    @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
-
   :root {
   /* colors */
     --color-gray-100: #f8f8f8; /* background color in figma */
@@ -28,6 +26,7 @@ export const GlobalStyle = createGlobalStyle`
     width: 100%;
     height: 100%;
     font-family: 'Roboto', 'Open Sans', sans-serif;
+    line-height: 1.5;
   }
 
   #root {
@@ -38,26 +37,30 @@ export const GlobalStyle = createGlobalStyle`
   body {
     display: flex;
     justify-content: center;
-    align-items: center;
+    background-color: var(--color-gray-100);
   }
 `;
 
 export const Container = styled.div`
-  max-width: 1240px; 
+  max-width: 80%; 
   margin: 0 auto;
 `;
 
 export const SectionContainer = styled.section`
   max-width: 1240px; 
   margin: 0 auto;
+
+  padding: 1rem 3rem;
 `;
 
 // Divs used in User and Feed
 
 export const BaseDiv = styled.div`
-background-color: #fff;
+  background-color: #fff;
   border-radius: 6px;
   border: 0;
+  padding: 1rem;
+  /* font-family: "Roboto", 'Open Sans', sans-serif; */
 `;
 
 export const DivWithShadow = styled(BaseDiv)`

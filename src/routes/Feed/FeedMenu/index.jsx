@@ -1,13 +1,16 @@
-import { SectionContainer } from "../../../styles";
+import { FeedMenuContainer, FeedMenuLink, SearchForm } from "./styles";
 
 function FeedMenu() {
   return (
-    <SectionContainer>
-      <div>Search</div>
-      <div>Liked</div>
-      <div>Friends</div>
-      <div>Follow</div>
-    </SectionContainer>
+    <FeedMenuContainer>
+      <form>
+        <SearchForm type="text" name="post-search" placeholder="Search" />
+      </form>
+      <FeedMenuLink>All </FeedMenuLink>
+      <FeedMenuLink>Liked</FeedMenuLink>
+      <FeedMenuLink>Friends</FeedMenuLink>
+      <FeedMenuLink>Follow</FeedMenuLink>
+    </FeedMenuContainer>
   );
 }
 

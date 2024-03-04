@@ -1,18 +1,12 @@
-import { BaseDiv, SectionContainer } from "../../styles";
+import PostsList from "../../components/Posts/PostsList";
 import FeedMenu from "./FeedMenu";
 
 function Feed() {
   return (
-    <div>
+    <>
       <FeedMenu />
-
-      <SectionContainer>
-        <BaseDiv>
-          <h3>Post Title</h3>
-        </BaseDiv>
-      </SectionContainer>
-      
-    </div>
+      <PostsList />
+    </>
   );
 }
 
