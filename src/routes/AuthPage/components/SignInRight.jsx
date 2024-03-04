@@ -1,32 +1,32 @@
-import styled from "styled-components";
+import styled from 'styled-components';
+import * as palette from '../Variables';
 
 const Link = styled.div`
   position: relative;
 `;
 const Link1 = styled.div`
   position: relative;
-  font-size: var(--font-size-3xs);
+  font-size: ${palette.fontSize3Xs};
   letter-spacing: 1px;
   text-transform: uppercase;
-  font-family: var(--font-roboto);
-  color: var(--color-black);
+  font-family: ${palette.fontRoboto};
+  color: ${palette.colorBlack};
   text-align: center;
 `;
 const Button = styled.button`
   cursor: pointer;
-  border: 1px solid var(--color-gray-300);
-  padding: var(--padding-sm) var(--padding-15xl) var(--padding-sm)
-    var(--padding-19xl);
+  border: 1px solid ${palette.colorGray300};
+  padding: ${palette.paddingSm} ${palette.padding15Xl} ${palette.paddingSm} ${palette.padding19Xl};
   background-color: transparent;
-  border-radius: var(--br-31xl);
+  border-radius: ${palette.br31Xl};
   display: flex;
   flex-direction: row;
   align-items: flex-start;
   justify-content: flex-start;
   white-space: nowrap;
   &:hover {
-    background-color: var(--color-darkslategray-200);
-    border: 1px solid var(--color-darkslategray-100);
+    background-color: ${palette.colorDarkslategray200};
+    border: 1px solid ${palette.colorDarkslategray100};
     box-sizing: border-box;
   }
 `;
@@ -45,15 +45,15 @@ const Description = styled.h1`
   margin: 0;
   align-self: stretch;
   position: relative;
-  font-size: var(--font-size-21xl);
+  font-size: ${palette.gap21Xl};
   font-weight: 500;
   font-family: inherit;
   text-align: center;
   @media screen and (max-width: 1050px) {
-    font-size: var(--font-size-13xl);
+    font-size: ${palette.fontSize13Xl};
   }
   @media screen and (max-width: 450px) {
-    font-size: var(--font-size-5xl);
+    font-size: ${palette.fontSize5Xl};
   }
 `;
 const GroupIcon = styled.img`
@@ -64,9 +64,9 @@ const GroupIcon = styled.img`
 `;
 const Input = styled.input`
   outline: none;
-  font-family: var(--font-roboto);
-  font-size: var(--font-size-base);
-  color: var(--color-black);
+  font-family: ${palette.fontRoboto};
+  font-size: ${palette.fontSizeBase};
+  color: ${palette.colorBlack};
   border: none;
   width: 100%;
   height: 100%;
@@ -78,13 +78,13 @@ const Input = styled.input`
 `;
 const InputUser = styled.div`
   width: 18rem;
-  border-bottom: 1px solid var(--color-gray-400);
+  border-bottom: 1px solid ${palette.colorGray400};
   box-sizing: border-box;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: flex-start;
-  padding: 0rem 0rem var(--padding-base);
+  padding: 0rem 0rem ${palette.paddingBase};
   gap: 0rem 1.375rem;
 `;
 
@@ -102,22 +102,22 @@ const Inputs = styled.div`
 `;
 const Link2 = styled.div`
   position: relative;
-  font-size: var(--font-size-xs);
+  font-size: ${palette.fontSizeXs};
   letter-spacing: 1px;
   text-transform: uppercase;
-  font-family: var(--font-roboto);
-  color: var(--color-white);
+  font-family: ${palette.fontRoboto};
+  color: ${palette.colorWhite};
   text-align: center;
 `;
 const Button1 = styled.div`
   align-self: stretch;
-  border-radius: var(--br-11xl);
+  border-radius: ${palette.br11Xl};
   background: linear-gradient(132.96deg, #c468ff, #6e91f6);
   display: flex;
   flex-direction: row;
   align-items: flex-start;
   justify-content: center;
-  padding: var(--padding-4xl) var(--padding-xl);
+  padding: ${palette.padding4Xl} ${palette.paddingXl};
   white-space: nowrap;
 `;
 
@@ -143,27 +143,28 @@ const Form = styled.div`
   align-items: center;
   justify-content: flex-start;
   max-width: 100%;
-  font-size: var(--font-size-base);
+  font-size: ${palette.fontSizeBase};
 `;
 const RightRoot = styled.div`
-    height: 100vh;
-    width: 60%;
+    font-family: ${palette.fontRoboto};
+  height: 100vh;
+  width: 60%;
   flex: 1;
-  background-color: var(--color-white);
+  background-color: ${palette.colorWhite};
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  padding: var(--padding-21xl);
+  padding: ${palette.gap21Xl};
   box-sizing: border-box;
   gap: 7.875rem 0rem;
   min-width: 35.125rem;
   min-height: 50rem;
   max-width: 100vh;
   text-align: left;
-  font-size: var(--font-size-sm);
-  color: var(--color-black);
-  font-family: var(--font-roboto);
+  font-size: ${palette.fontSizeSm};
+  color: ${palette.colorBlack};
+  font-family: ${palette.fontRoboto};
   @media screen and (max-width: 1125px) {
     min-height: auto;
   }
@@ -171,8 +172,8 @@ const RightRoot = styled.div`
     gap: 7.875rem 0rem;
   }
   @media screen and (max-width: 750px) {
-    padding-top: var(--padding-7xl);
-    padding-bottom: var(--padding-7xl);
+    padding-top: ${palette.padding7Xl};
+    padding-bottom: ${palette.padding7Xl};
     box-sizing: border-box;
     min-width: 100%;
   }
@@ -195,13 +196,13 @@ const SignInRight = () => {
           <Description>Sign In</Description>
           <InputUser>
             <GroupIcon alt="" src="/sign_in_profile_icon.png" />
-            <Input type='email' placeholder="Email"/>
+            <Input type="email" placeholder="Email" />
           </InputUser>
           <InputUser>
             <GroupIcon loading="lazy" alt="" src="/password.png" />
-            <Input type='password' placeholder="Password" />
+            <Input type="password" placeholder="Password" />
           </InputUser>
-          </Inputs>
+        </Inputs>
         <ButtonFrame>
           <Button1>
             <Link2>SIGN IN</Link2>
@@ -213,3 +214,4 @@ const SignInRight = () => {
 };
 
 export default SignInRight;
+
