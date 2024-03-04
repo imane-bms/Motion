@@ -1,8 +1,18 @@
 import { Link } from "react-router-dom";
 import { SimpleButton } from "../../styles";
 import DivWithShadow from "../../styles/divs";
+import { useSelector } from "react-redux";
+import StatsCard from "../Stats";
 
 const UserInfo = () => {
+  const statistics = useSelector((state) => [
+    { title: "Posts", value: state.stats.posts },
+    { title: "Likes", value: state.stats.likes },
+    { title: "Friends", value: state.stats.friends },
+    { title: "Followers", value: state.stats.followers },
+    { title: "Following", value: state.stats.following },
+  ]);
+
   return (
     <DivWithShadow>
       <section className="left-profileInfo">
@@ -25,6 +35,7 @@ const UserInfo = () => {
               nesciunt voluptatibus placeat.
             </p>
           </div>
+          {/* hobbies from store? */}
           <div className="things-i-like">
             <p>somehting</p>
             <p>somehting</p>
@@ -39,26 +50,13 @@ const UserInfo = () => {
             <p>User Phone</p>
           </div>
           <div className="stats">
-            <div className="posts-stats">
-              <p>count</p>
-              <p>Posts</p>
-            </div>
-            <div className="likes-stats">
-              <p>count</p>
-              <p>Posts</p>
-            </div>
-            <div className="friends-stats">
-              <p>count</p>
-              <p>Posts</p>
-            </div>
-            <div className="followers-stats">
-              <p>count</p>
-              <p>Posts</p>
-            </div>
-            <div className="following-stats">
-              <p>count</p>
-              <p>Posts</p>
-            </div>
+            {statistics.map((statistic, index) => (
+              <StatsCard
+                key={index}
+                title={statistic.title}
+                value={statistic.value}
+              />
+            ))}
           </div>
         </div>
       </section>
