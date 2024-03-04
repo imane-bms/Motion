@@ -1,7 +1,7 @@
-
-import styled from "styled-components";
-import LeftAuthor from "./components/LeftAuth";
-import SignInRight from "./components/SignInRight";
+import styled from 'styled-components';
+import LeftAuthor from './components/LeftAuth';
+import SignInRight from './components/SignInRight';
+import * as palette from './Variables';
 
 const LeftParent = styled.section`
   align-self: stretch;
@@ -18,7 +18,7 @@ const LeftParent = styled.section`
 const SignInRoot = styled.div`
   width: 100%;
   position: relative;
-  background-color: var(--color-white);
+  background-color: ${palette.colorWhite};
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -39,3 +39,4 @@ const SignIn = () => {
 };
 
 export default SignIn;
+
