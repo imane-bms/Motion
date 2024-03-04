@@ -47,6 +47,11 @@ export const Container = styled.div`
   margin: 0 auto;
 `;
 
+export const SectionContainer = styled.section`
+  max-width: 1240px; 
+  margin: 0 auto;
+`;
+
 // Divs used in User and Feed
 
 export const BaseDiv = styled.div`
