@@ -18,7 +18,7 @@ import {
 
 import jennifer from "../../assets/images/users/jennifer.png";
 
-const UserInfo = ({ onEditingMode }) => {
+const UserInfo = (/*{ onEditingMode }*/) => {
   const statistics = useSelector((state) => [
     { title: "Posts", value: state.stats.posts },
     { title: "Likes", value: state.stats.likes },
@@ -29,7 +29,7 @@ const UserInfo = ({ onEditingMode }) => {
 
   const navigate = useNavigate();
   const handleEditing = () => {
-    onEditingMode(); // set editing mode to true
+    // onEditingMode; // set editing mode to true
     navigate("/user/me/edit");
   };
 

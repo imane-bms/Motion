@@ -61,7 +61,9 @@ function PostsList() {
   return (
     <SectionContainer>
       <PostsContainer>
-        <ResponsiveMasonry columnsCountBreakPoints={{ 350: 1, 900: 2, 1281: 3 } }>
+        <ResponsiveMasonry
+          columnsCountBreakPoints={{ 350: 1, 900: 2, 1281: 3 }}
+        >
           <Masonry gutter="2rem">
             <NewPostForm />
 
