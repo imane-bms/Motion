@@ -6,13 +6,18 @@
 // import Header from "../../components/Header";
 //import NotFound from "../NotFound";
 
-import UserPage from "../UserPage";
+import { Outlet } from "react-router-dom";
+import Header from "../../components/Header";
+// import Feed from "../Feed";
+// import UserPage from "../UserPage";
 
 function Layout() {
   return (
     <>
-      <UserPage />
-      <main>{/* <Main /> */}</main>
+      <Header />
+      <main>
+        <Outlet />
+      </main>
       {/* <Footer /> */}
     </>
   );

@@ -3,7 +3,7 @@ import testUser from "../../../assets/images/users/alber.png";
 import sendButton from "../../../assets/svgs/send_button.svg";
 import { BaseDiv } from "../../../styles";
 
-import { CloseButton, NewPostFormPreviw, Overlay, Popup } from "./styles";
+import { CloseButton, NewPostFormPreviw, Overlay, Popup, PostInputArea } from "./styles";
 
 function NewPostForm() {
   const [isOpen, setIsOpen] = useState(false);
@@ -26,8 +26,10 @@ function NewPostForm() {
           <Popup onClick={(e) => e.stopPropagation()} className="popup">
             <BaseDiv>
               <img src={testUser} alt="testUser" />
-              <p>What do you have in your mind?</p>
+              <PostInputArea name="comment" placeholder="What do you have in your mind?"></PostInputArea>
               <img src={sendButton} alt="send post button" />
+              <input type="file" />
+              <button> send </button>
             </BaseDiv>
             <CloseButton onClick={closePopup} className="close-btn">
               X

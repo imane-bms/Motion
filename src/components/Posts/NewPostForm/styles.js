@@ -10,7 +10,6 @@ width: 100%;
 max-height: min-content;
 `
 
-// Стилизованный компонент для фона
 export const Overlay = styled.div`
   position: fixed;
   top: 0;
@@ -23,9 +22,9 @@ export const Overlay = styled.div`
   align-items: center;
 `;
 
-// Стилизованный компонент для попапа
 export const Popup = styled.div`
   min-width: 50%;
+  max-width: 90%;
   background-color: #fff;
   padding: 20px;
   border-radius: 5px;
@@ -33,7 +32,6 @@ export const Popup = styled.div`
   position: relative;
 `;
 
-// Стилизованный компонент для кнопки закрытия
 export const CloseButton = styled.button`
   position: absolute;
   top: -1rem;
@@ -45,3 +43,12 @@ export const CloseButton = styled.button`
 
   cursor: pointer;
 `;
+
+export const PostInputArea = styled.textarea`
+width: 100%;
+min-height: 18rem;
+padding: 1rem;
+border: 1 solid gray;
+
+font-size: 1.5rem;
+`
