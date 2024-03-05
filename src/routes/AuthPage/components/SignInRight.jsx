@@ -1,3 +1,4 @@
+
 import passwordIcon from "../../../assets/svgs/password.svg";
 import userIcon from "../../../assets/svgs/avatar.svg";
 
@@ -15,6 +16,7 @@ import {
   GradientButtonText,
   ButtonFrame,
   PageH1,
+  SignUpText,
 } from "./stylesRight";
 
 
@@ -23,7 +25,7 @@ const SignInRight = () => {
     <RightRoot>
       <NoUserGroup>
         <NoUserQuestion>{`Don't have an account?`}</NoUserQuestion>
-        <SignUpButton>Sign Up</SignUpButton>
+        <SignUpButton as={SignUpText} to="/signup">SIGN UP</SignUpButton>
       </NoUserGroup>
 
       <AuthForm>

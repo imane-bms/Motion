@@ -4,6 +4,8 @@
 //import SignIn from "../AuthPage/SignIn";
 //import SignUp from "../AuthPage/SignUp";
 //import Feed from "../Feed";
+import Login from "../AuthPage"
+
 
 // import UserPage from "../UserPage";
 
@@ -13,6 +15,7 @@ function Layout() {
     <>
       {/* <Header/> */}
       <main>
+        <Login/>
         
       </main>
       {/* <Footer /> */}

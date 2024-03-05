@@ -18,12 +18,17 @@ import {
   OvalIcon,
   ButtonFrame,
   PageH1,
+  SignUpText
   } from "./stylesRight";
+
+  
+  const SignUpRight = () => {
+    return (
 
     <RightRoot>
       <NoUserGroup>
         <NoUserQuestion>{'Already have an account?'}</NoUserQuestion>
-        <SignUpButton>SIGN IN</SignUpButton>
+        <SignUpButton as={SignUpText} to="/">SIGN IN</SignUpButton>
       </NoUserGroup>
 
       <AuthForm>

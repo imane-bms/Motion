@@ -1,15 +1,21 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Layout from "./Layout";
+import { BrowserRouter, Route, Routes} from "react-router-dom";
+import SignIn from "./AuthPage/SignIn";
+import SignUp from "./AuthPage/SignUp"
+import Login from "./AuthPage"
+
 
 
 const Router = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Layout />}>
+      <Route path="/" element={<SignIn />} />
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/login" element={<Login />} />
+        
           {/* <Route path="/shop" element={<Shop />} /> */}
 
-        </Route>
+        
       </Routes>
     </BrowserRouter>
   );

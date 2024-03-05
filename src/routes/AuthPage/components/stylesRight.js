@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import * as palette from '../Variables';
-import { SimpleButton } from "../../../styles";
 import { GradientButton } from "../../../styles";
+import { Link } from "react-router-dom";
 
 
 // ********* RIGHT *********
@@ -11,33 +11,34 @@ import { GradientButton } from "../../../styles";
 //   position: relative;
 // `;
 
-// export const Link1 = styled.div`
-//   position: relative;
-//   font-size: ${palette.fontSize3Xs};
-//   letter-spacing: 1px;
-//   text-transform: uppercase;
-//   font-family: ${palette.fontRoboto};
-//   color: ${palette.colorBlack};
-//   text-align: center;
-// `;
+ export const SignUpText = styled(Link)`
+   position: relative;
+   font-size: ${palette.fontSize3Xs};
+   letter-spacing: 1px;
+   text-transform: uppercase;
+   font-family: ${palette.fontRoboto};
+   color: ${palette.colorBlack};
+   text-align: center;
+   text-decoration: none;
+ `;
 
-// export const Button = styled.button`
-//   cursor: pointer;
-//   border: 1px solid ${palette.colorGray300};
-//   padding: ${palette.paddingSm} ${palette.padding15Xl} ${palette.paddingSm} ${palette.padding19Xl};
-//   background-color: transparent;
-//   border-radius: ${palette.br31Xl};
-//   display: flex;
-//   flex-direction: row;
-//   align-items: flex-start;
-//   justify-content: flex-start;
-//   white-space: nowrap;
-//   &:hover {
-//     background-color: ${palette.colorDarkslategray200};
-//     border: 1px solid ${palette.colorDarkslategray100};
-//     box-sizing: border-box;
-//   }
-// `;
+ export const SignUpButton = styled.button`
+  cursor: pointer;
+  border: 1px solid ${palette.colorGray500};
+  padding: ${palette.paddingSm} ${palette.padding15Xl} ${palette.paddingSm} ${palette.padding19Xl};
+  background-color: transparent;
+  border-radius: ${palette.br31Xl};
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  white-space: nowrap;
+  &:hover {
+    background-color: ${palette.colorDarkslategray200};
+    border: 1px solid ${palette.colorDarkslategray100};
+    box-sizing: border-box;
+  }
+`;
 
 export const GradientButtonBetterStyled = styled(GradientButton)`
   background-image: var(--linearGradient);
@@ -90,19 +91,19 @@ export const NoUserQuestion = styled.p`
   font-size: 0.8rem;
 `;
 
-export const SignUpButton = styled(SimpleButton)`
-  font-size: 0.8rem;
-  border: 0;
-`
+//export const SignUpButton = styled(SimpleButton)`
+  //font-size: 0.8rem;
+  //border: 0;
+//`
 
-export const AuthForm = styled.div`
+export const AuthForm = styled.form`
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 3rem;
-  /* justify-content: flex-start; */
-  /* max-width: 100%; */
-  /* width: 21.25rem; */
+   /*justify-content: flex-start; 
+   max-width: 100%; 
+   width: 21.25rem; */
 `;
 
 
