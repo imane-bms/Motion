@@ -16,7 +16,8 @@ import {
   GradientButtonText,
   PageDots,
   OvalIcon,
-  ButtonFrame
+  ButtonFrame,
+  PageH1,
   } from "./stylesRight";
 
 
@@ -30,16 +31,17 @@ const SignUpRight = () => {
       </NoUserGroup>
 
       <AuthForm>
-        <h2>Sign Up</h2>
+        <PageH1>Sign Up</PageH1>
 
         <Inputs>
           <InputGroup>
             <GroupIcon alt="" src={emailIcon} />
+            
             <Input type="email" placeholder="Email" />
           </InputGroup>  
         </Inputs>
         <ButtonFrame>
-            <GradientButtonBetterStyled><GradientButtonText>Sign Up
+            <GradientButtonBetterStyled><GradientButtonText>CONTINUE
             </GradientButtonText></GradientButtonBetterStyled>
 
             <PageDots>

@@ -50,12 +50,24 @@ export const GradientButtonBetterStyled = styled(GradientButton)`
     opacity: 0.9;
   }
 `
-  export const GradientButtonText = styled.p`
+export const GradientButtonText = styled.p`
   font-size: ${palette.fontSizeXs};
   font-family: ${palette.fontRoboto};
   letter-spacing: 1px;
-  `
-
+`
+export const PageH1 = styled.h1`
+  margin: 0;
+  position: relative;
+  font-size: ${palette.fontSize21Xl};
+  font-weight: 300;
+  font-family: inherit;
+  @media screen and (max-width: 1050px) {
+  font-size: ${palette.fontSize5Xl
+  }
+  @media screen and (max-width: 450px) {
+  font-size: ${palette.fontSize5Xl};
+  }
+`;
   
 
 export const NoUserGroup = styled.div`
@@ -168,11 +180,10 @@ flex-direction: column;
 align-items: center;
 justify-content: flex-start;
 gap: 3.375rem 0rem;
+`;
 /*@media screen and (max-width: 450px) {
   gap: 3.375rem 0rem;
 }*/
-`;
-
 
 
 

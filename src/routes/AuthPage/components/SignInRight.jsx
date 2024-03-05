@@ -13,7 +13,8 @@ import {
   SignUpButton,
   GradientButtonBetterStyled,
   GradientButtonText,
-  ButtonFrame
+  ButtonFrame,
+  PageH1,
 } from "./stylesRight";
 
 
@@ -26,7 +27,7 @@ const SignInRight = () => {
       </NoUserGroup>
 
       <AuthForm>
-        <h2>Sign In</h2>
+        <PageH1>Sign In</PageH1>
 
         <Inputs>
           <InputGroup>
