@@ -62,11 +62,12 @@ export const PageH1 = styled.h1`
   font-weight: 300;
   font-family: inherit;
   @media screen and (max-width: 1050px) {
-  font-size: ${palette.fontSize5Xl
-  }
+  font-size: ${palette.fontSize5Xl};
+  };
   @media screen and (max-width: 450px) {
   font-size: ${palette.fontSize5Xl};
-  }
+  };
+  
 `;
   
 
@@ -90,8 +91,8 @@ export const NoUserQuestion = styled.p`
 `;
 
 export const SignUpButton = styled(SimpleButton)`
-font-size: 0.8rem;
-border: 0;
+  font-size: 0.8rem;
+  border: 0;
 `
 
 export const AuthForm = styled.div`

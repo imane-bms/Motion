@@ -1,8 +1,9 @@
 import tickCircle from "../../../assets/svgs/tick_circle.svg";
 import tick from "../../../assets/svgs/tick.svg";
-import { RightRoot } from "../styles";
 import pathIcon from "../../../assets/svgs/path_oval_icon.svg";
 import emptyPathIcon from "../../../assets/svgs/path_oval_icon_empty.svg"
+
+import { RightRoot } from "../styles";
 import {
    EmailSent,
    TickIcon, 
