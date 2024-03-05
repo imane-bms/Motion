@@ -20,10 +20,6 @@ import {
   PageH1,
   } from "./stylesRight";
 
-
-
-const SignUpRight = () => {
-  return (
     <RightRoot>
       <NoUserGroup>
         <NoUserQuestion>{'Already have an account?'}</NoUserQuestion>
