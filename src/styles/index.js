@@ -71,9 +71,10 @@ export const DivWithShadow = styled(BaseDiv)`
 // Buttons — better styling is needed :)
 
 export const ButtonBase = styled.button`
-  padding: 0.6rem 1.2rem;
+  padding: 1rem 2rem;
   border-radius: 3rem;
   cursor: pointer;
+  text-transform: uppercase;
 
   &:focus-visible {
     outline: 2px var(--purple);
@@ -94,6 +95,7 @@ export const GradientButton = styled(ButtonBase)`
   background-image: var(--linearGradient);
   color: white;
   transition: opacity 0.3s ease;
+  border: 0;
 
   &:hover {
     opacity: 0.9;
