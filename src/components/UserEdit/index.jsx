@@ -11,6 +11,13 @@ import {
   FormGrid,
   StyledGridItem,
   TallerGridItem,
+  NumberInput,
+  HobbyWrapper,
+  RemoveBtn,
+  SmallFlexDiv,
+  HobbyText,
+  HobbiesInput,
+  CustomSelect,
 } from "./styles";
 
 import jennifer from "../../assets/images/users/jennifer.png";
@@ -22,8 +29,23 @@ const UserEdit = () => {
   };
 
   const [hobbies, setHobbies] = useState([]);
+  // to control/hold the current hobby being typed
+  const [newHobby, setNewHobby] = useState("");
   const hobbiesHandler = (e) => {
-    setHobbies([...hobbies, e.target.value]);
+    e.preventDefault();
+    // check if the input is not empty or contains only space ans allow only 5 hobbies
+    //trim() method removes the white space
+    if (newHobby.trim() !== "" && hobbies.length < 5) {
+      setHobbies([...hobbies, newHobby]); // add the new hobby to the hobbies list
+      setNewHobby(""); // clear the input filed after adding the new hobby
+    }
+    console.log(hobbies);
+  };
+
+  const removeHobby = (index) => {
+    const updatedHobbies = [...hobbies];
+    updatedHobbies.splice(index, 1);
+    setHobbies(updatedHobbies);
   };
   //   user clicks UPDATE IMAGE => dropdown appears
   const [isClicked, setIsClicked] = useState(false);
@@ -101,26 +123,31 @@ const UserEdit = () => {
           <StyledGridItem>
             {/* location is a drop list */}
             <label htmlFor="location">Location</label>
-            <select type="text" id="location" required onChange={inputHandler}>
+            <CustomSelect
+              type="text"
+              id="location"
+              required
+              onChange={inputHandler}
+            >
+              <option disabled>Choose Your Location</option>
               <option value="Berlin,Germany">Berlin, Germany</option>
               <option value="Zürich,Switzerland">Zürich,Switzerland</option>
               <option value="Tokyo, Japan">Tokyo, Japan</option>
               <option value="Rabat, Morocco">Rabat, Morocco</option>
-            </select>
+            </CustomSelect>
           </StyledGridItem>
           <StyledGridItem>
             <label htmlFor="phone">Phone </label>
-            <Input type="number" id="phone" required onChange={inputHandler} />
+            <NumberInput
+              type="number"
+              id="phone"
+              required
+              onChange={inputHandler}
+            />
           </StyledGridItem>
           <TallerGridItem>
             <label htmlFor="about">About</label>
-            <Input
-              type="text"
-              id="about"
-              required
-              onChange={inputHandler}
-              isAbout
-            />
+            <Input type="text" id="about" required onChange={inputHandler} />
           </TallerGridItem>
           <StyledGridItem>
             <label htmlFor="password">Password</label>
@@ -136,10 +163,21 @@ const UserEdit = () => {
           <HobbiesContainer>
             <p>Things I like</p>
             {/* added hobbies in form of buttons here */}
-            {hobbies.map((hobby, index) => {
-              return <button key={index}>{hobby} X</button>;
-            })}
-            <input type="text" placeholder="Type something..." />
+            <SmallFlexDiv>
+              {hobbies.map((hobby, index) => (
+                <HobbyWrapper key={index}>
+                  <HobbyText>{hobby}</HobbyText>
+                  <RemoveBtn onClick={() => removeHobby(index)}>X</RemoveBtn>
+                </HobbyWrapper>
+              ))}
+            </SmallFlexDiv>
+            {/* Updated the function to controll the addition of new hobbies */}
+            <HobbiesInput
+              type="text"
+              placeholder="Type something..."
+              value={newHobby}
+              onChange={(e) => setNewHobby(e.target.value)}
+            />
             <SimpleButton onClick={hobbiesHandler}>ADD</SimpleButton>
           </HobbiesContainer>
         </FormGrid>
