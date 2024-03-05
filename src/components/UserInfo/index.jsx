@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
-import { SimpleButton } from "../../styles";
-import DivWithShadow from "../../styles/divs";
+import { DivWithShadow, SimpleButton } from "../../styles";
 import { useSelector } from "react-redux";
 import StatsCard from "../Stats";
 

@@ -59,12 +59,21 @@ export const BaseDiv = styled.div`
   background-color: #fff;
   border-radius: 6px;
   border: 0;
-  padding: 1rem;
-  /* font-family: "Roboto", 'Open Sans', sans-serif; */
+  padding: 2rem;
 `;
 
 export const DivWithShadow = styled(BaseDiv)`
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+`;
+
+export const BaseArticle = styled.article`
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  background-color: #fff;
+  border-radius: 6px;
+  border: 0;
+  padding: 2rem;
 `;
 
 
