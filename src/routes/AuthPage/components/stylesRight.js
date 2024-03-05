@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import * as palette from '../Variables';
 import { SimpleButton } from "../../../styles";
+import { GradientButton } from "../../../styles";
 
 
 // ********* RIGHT *********
@@ -38,6 +39,24 @@ import { SimpleButton } from "../../../styles";
 //   }
 // `;
 
+export const GradientButtonBetterStyled = styled(GradientButton)`
+  background-image: var(--linearGradient);
+  color: white;
+  transition: opacity 0.3s ease;
+  border-radius: ${palette.br11Xl};
+  padding: ${palette.padding4Xl} ${palette.paddingXl};
+  align-self: stretch;
+  &:hover {
+    opacity: 0.9;
+  }
+`
+  export const GradientButtonText = styled.p`
+  font-size: ${palette.fontSizeXs};
+  font-family: ${palette.fontRoboto};
+  letter-spacing: 1px;
+  `
+
+  
 
 export const NoUserGroup = styled.div`
   position: absolute;
@@ -96,8 +115,8 @@ export const InputGroup = styled.div`
   display: flex;
   align-items: center;
 
-  /* flex-direction: row; */
-  /* justify-content: flex-start; */
+  //flex-direction: row; 
+  //justify-content: flex-start; 
   padding: 0 0 1rem 0;
   gap: 0 1rem;
 `;
@@ -112,18 +131,46 @@ export const Input = styled.input`
   width: 100%;
   height: 100%;
 
-  /* background: transparent;
+   //background: transparent;
   margin-left: 1rem;
   width: ${(p) => p.propWidth3};
   padding: ${(p) => p.propPadding1};
-  gap: ${(p) => p.propGap1}; */
+  gap: ${(p) => p.propGap1}; 
 `;
 
 export const GroupIcon = styled.img`
-  /* height: 1.5rem;
-  width: 1.5rem; */
+   height: 1.5rem;
+  width: 1.5rem; 
+  `;
   /* position: relative;
-  object-fit: cover; */
+  object-fit: cover; `;*/
+
+  export const PageDots = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 0rem 1rem;
+`;
+
+export const OvalIcon = styled.img`
+  height: 0.5rem;
+  width: 0.5rem;
+  position: relative;
+  min-height: 0.5rem;
+  
+`;
+
+export const ButtonFrame = styled.div`
+width: 18rem;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: flex-start;
+gap: 3.375rem 0rem;
+/*@media screen and (max-width: 450px) {
+  gap: 3.375rem 0rem;
+}*/
 `;
 
 
