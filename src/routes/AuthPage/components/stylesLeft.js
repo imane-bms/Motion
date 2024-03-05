@@ -44,6 +44,19 @@ import { ButtonBase } from "../../../styles";
 //   }
 // `;
 
+export const PageH1 = styled.h1`
+  margin: 0;
+  position: relative;
+  font-size: ${palette.fontSize21Xl};
+  font-weight: 300;
+  font-family: ${palette.fontRoboto};
+  @media screen and (max-width: 1050px) {
+    font-size: ${palette.fontSize13Xl};
+  }
+  @media screen and (max-width: 450px) {
+    font-size: ${palette.fontSize5Xl};
+  }
+`;
 
 export const Logo = styled.div`
   /* width: 12.938rem; */

@@ -1,7 +1,6 @@
 import passwordIcon from "../../../assets/svgs/password.svg";
 import userIcon from "../../../assets/svgs/avatar.svg";
 
-import { GradientButton } from "../../../styles";
 import { RightRoot } from "../styles";
 import {
   AuthForm,
@@ -12,7 +11,12 @@ import {
   NoUserGroup,
   NoUserQuestion,
   SignUpButton,
+  GradientButtonBetterStyled,
+  GradientButtonText,
+  ButtonFrame,
+  PageH1,
 } from "./stylesRight";
+
 
 const SignInRight = () => {
   return (
@@ -23,7 +27,7 @@ const SignInRight = () => {
       </NoUserGroup>
 
       <AuthForm>
-        <h2>Sign In</h2>
+        <PageH1>Sign In</PageH1>
 
         <Inputs>
           <InputGroup>
@@ -35,9 +39,12 @@ const SignInRight = () => {
             <Input type="password" placeholder="Password" />
           </InputGroup>
         </Inputs>
-
-        <GradientButton>Sign In</GradientButton>
-      </AuthForm>
+        <ButtonFrame>
+          <GradientButtonBetterStyled><GradientButtonText>
+          Sign In
+          </GradientButtonText></GradientButtonBetterStyled>
+        </ButtonFrame>
+        </AuthForm>
     </RightRoot>
   );
 };
