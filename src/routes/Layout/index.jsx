@@ -2,7 +2,7 @@
 // import Header from "../../components/Header";
 // import Footer from "../../components/Footer";
 // import SignIn from "../AuthPage/SignIn";
-// import Feed from "../Feed";
+import Feed from "../Feed";
 import Header from "../../components/Header";
 //import NotFound from "../NotFound";
 
@@ -12,7 +12,9 @@ function Layout() {
   return (
     <>
       <Header />
-      <main>{/* <Main /> */}</main>
+      <main>
+        <Feed />
+      </main>
       {/* <Footer /> */}
     </>
   );
