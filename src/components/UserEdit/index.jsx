@@ -18,40 +18,61 @@ import {
   HobbyText,
   HobbiesInput,
   CustomSelect,
+  UpdateImageMenue,
+  TextHighlight,
 } from "./styles";
 
 import jennifer from "../../assets/images/users/jennifer.png";
+import { useDispatch, useSelector } from "react-redux";
+import { selectProfile, updateprofile } from "../../store/slices/profileSlice";
 
 const UserEdit = () => {
-  const [user, setUser] = useState({});
+  const dispatch = useDispatch();
+  const user = useSelector(selectProfile);
+  // track changes made by the user :
+  const [formData, setFormData] = useState(user);
+
   const inputHandler = (e) => {
-    setUser({ ...user, [e.target.id]: e.target.value });
+    const { id, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [id]: value,
+    }));
   };
 
-  const [hobbies, setHobbies] = useState([]);
+  const [hobbies, setHobbies] = useState(user.hobbies || []);
   // to control/hold the current hobby being typed
   const [newHobby, setNewHobby] = useState("");
+
   const hobbiesHandler = (e) => {
     e.preventDefault();
     // check if the input is not empty or contains only space ans allow only 5 hobbies
     //trim() method removes the white space
     if (newHobby.trim() !== "" && hobbies.length < 5) {
-      setHobbies([...hobbies, newHobby]); // add the new hobby to the hobbies list
+      const updatedHobbies = [...hobbies, newHobby]; // add the new hobby to the hobbies list
+      setFormData((prevData) => ({
+        ...prevData,
+        hobbies: updatedHobbies,
+      }));
+      setHobbies(updatedHobbies); // update locally
       setNewHobby(""); // clear the input filed after adding the new hobby
     }
-    console.log(hobbies);
   };
 
   const removeHobby = (index) => {
     const updatedHobbies = [...hobbies];
     updatedHobbies.splice(index, 1);
-    setHobbies(updatedHobbies);
+    setFormData((prevData) => ({
+      ...prevData,
+      hobbies: updatedHobbies,
+    }));
+    setHobbies(updatedHobbies); // update locally
   };
   //   user clicks UPDATE IMAGE => dropdown appears
-  const [isClicked, setIsClicked] = useState(false);
+  const [isToUpdateImg, setIsToUpdateImg] = useState(false);
   const [imageSrc, setImageSrc] = useState(null); //to store the url of the image when uploaded
 
-  const updateImage = () => setIsClicked(!isClicked);
+  const updateImage = () => setIsToUpdateImg(!isToUpdateImg);
 
   const handleUploadImage = (e) => {
     const file = e.target.files[0];
@@ -64,6 +85,9 @@ const UserEdit = () => {
     }
   };
   const handleRemoveImage = () => setImageSrc(null);
+  const saveChanges = () => {
+    dispatch(updateprofile(formData)); // dispatch changed to redux store only when save btn is clicked
+  };
 
   return (
     <SmallDivWithShadow>
@@ -74,26 +98,26 @@ const UserEdit = () => {
           <Image src={jennifer} alt="avatar" />
           <SimpleButton onClick={updateImage}>UPDATE IMAGE</SimpleButton>
           {/* on click=> upload or remove */}
-          {isClicked && (
-            <div>
+          {isToUpdateImg && (
+            <UpdateImageMenue>
               {/* input to upload new img using file type*/}
-              <label htmlFor="upload-img">UPLOAD</label>
+              <label htmlFor="upload-img">
+                <TextHighlight>UPLOAD</TextHighlight>
+              </label>
               <input
                 id="upload-img"
                 style={{ visibility: "hidden" }}
                 type="file"
                 onClick={handleUploadImage}
               />
-              <button className="remove-btn" onClick={handleRemoveImage}>
-                REMOVE
-              </button>
-            </div>
+              <TextHighlight onClick={handleRemoveImage}>REMOVE</TextHighlight>
+            </UpdateImageMenue>
           )}
         </FlexColContainer>
         <FlexColContainer>
-          <SimpleButton>DELETE ACCOUNT</SimpleButton>{" "}
+          <SimpleButton>DELETE ACCOUNT</SimpleButton>
           {/*delete userdata from store*/}
-          <GradientButton>SAVE</GradientButton>{" "}
+          <GradientButton onClick={saveChanges}>SAVE</GradientButton>
           {/* on submit =>dispatch changes to store*/}
         </FlexColContainer>
       </LeftFlexColDiv>
@@ -104,21 +128,40 @@ const UserEdit = () => {
             <Input
               type="text"
               id="firstName"
+              value={formData.firstName}
               required
               onChange={inputHandler}
             />
           </StyledGridItem>
           <StyledGridItem>
             <label htmlFor="lastName">Last Name </label>
-            <Input type="text" id="lastName" required onChange={inputHandler} />
+            <Input
+              type="text"
+              id="lastName"
+              value={formData.lastName}
+              required
+              onChange={inputHandler}
+            />
           </StyledGridItem>
           <StyledGridItem>
             <label htmlFor="email">Email</label>
-            <Input type="email" id="email" required onChange={inputHandler} />
+            <Input
+              type="email"
+              id="email"
+              value={formData.email}
+              required
+              onChange={inputHandler}
+            />
           </StyledGridItem>
           <StyledGridItem>
             <label htmlFor="username">Username</label>
-            <Input type="text" id="username" required onChange={inputHandler} />
+            <Input
+              type="text"
+              id="username"
+              value={formData.username}
+              required
+              onChange={inputHandler}
+            />
           </StyledGridItem>
           <StyledGridItem>
             {/* location is a drop list */}
@@ -126,6 +169,7 @@ const UserEdit = () => {
             <CustomSelect
               type="text"
               id="location"
+              value={formData.location}
               required
               onChange={inputHandler}
             >
@@ -141,13 +185,20 @@ const UserEdit = () => {
             <NumberInput
               type="number"
               id="phone"
+              value={formData.phone}
               required
               onChange={inputHandler}
             />
           </StyledGridItem>
           <TallerGridItem>
             <label htmlFor="about">About</label>
-            <Input type="text" id="about" required onChange={inputHandler} />
+            <Input
+              type="text"
+              id="about"
+              value={formData.about}
+              required
+              onChange={inputHandler}
+            />
           </TallerGridItem>
           <StyledGridItem>
             <label htmlFor="password">Password</label>
@@ -155,6 +206,7 @@ const UserEdit = () => {
             <Input
               type="password"
               id="password"
+              value={formData.password}
               required
               onChange={inputHandler}
             />
