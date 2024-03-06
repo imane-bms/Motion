@@ -7,6 +7,12 @@ const UserAxios = axios.create({
 });
 
 export const getMyUserDatas = async (token) => {
+  
+//   return await UserAxios.get('/users/me/', {headers: {
+//     Authorization: `Bearer ${token}`
+//   }})
+// }
+
   try {
     const response = await UserAxios.get("/users/me/", {
       headers: {
