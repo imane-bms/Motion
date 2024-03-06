@@ -1,108 +1,64 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+  //TODO dropdownmenu should closes after any clicks: links inside or anywhere outside
+  //TODO logout logic need to be addet 
+  //TODO three dots menu logig need to be addet 
+
+import { useState } from "react";
 import {
   HeaderContainer,
-  NavLinkContainer,
-  LeftHeaderNav,
-  Logo,
-  PostsLogo,
-  FindFriendLogo,
-  RightHeaderNav,
   Bell,
   Avatar,
-  Menu,
-  DropdownMenu,
-  DropdownMenuItem,
-  DropdownMenuItemText,
-  Login,
-  User,
-  NavLink, // New NavLink
-} from "./HeaderStyles";
+  NavGroupLink,
+  NavGroupLogo,
+  NavItemText,
+  NavItemIcon,
+  NavLogoIcon,
+  NavLogoText,
+  NavGroupAvatar,
+} from "./styles";
+
 import logoImage from "../../assets/images/logo.png";
-import postsImage from "../../assets/images/posts_logo.png";
+import postsImage from "../../assets/svgs/posts_logo.svg";
 import findFriends from "../../assets/svgs/icon-friends.svg";
 import bell from "../../assets/svgs/notification_bell.svg";
 import avatar from "../../assets/images/users/jennifer.png";
 import menu from "../../assets/svgs/menu.svg";
-import login from "../../assets/images/login.png";
-import user from "../../assets/images/user.png";
-import { MotionText } from "./HeaderStyles";
-import { PostsText } from "./HeaderStyles";
-import { Friends } from "./HeaderStyles";
+import DropDownMenu from "./DropDownMenu";
 
 const Header = () => {
   const [showDropdown, setShowDropdown] = useState(false);
-  const navigate = useNavigate();
   const handleDropdownToggle = () => {
     setShowDropdown(!showDropdown);
   };
 
-  const handleProfileClick = () => {
-    navigate("*"); //Naigate
-  };
-
-  const handleLogoutClick = () => {
-    navigate("*"); //Navigate
-  };
+  // const handleLogoutClick = () => {
+  //   navigate("*"); //Navigate
+  // };
 
   return (
     <HeaderContainer>
-      <LeftHeaderNav>
-        {/* Left Header */}
-        <NavLink to="/">
-          <NavLinkContainer>
-            <Logo src={logoImage} alt="Logo" />
-            <MotionText>Motion</MotionText>
-          </NavLinkContainer>
-        </NavLink>
-        <NavLink to="/">
-          <NavLinkContainer>
-            <PostsLogo src={postsImage} alt="Posts Logo" />
-            <PostsText>Posts</PostsText>
-          </NavLinkContainer>
-        </NavLink>
-        <NavLink to="/">
-          <NavLinkContainer>
-            <FindFriendLogo src={findFriends} alt="Find friends Icon" />
-            <Friends>Find Friends</Friends>
-          </NavLinkContainer>
-        </NavLink>
-      </LeftHeaderNav>
-      <RightHeaderNav>
-        {/* Right Header */}
-        <NavLink to="/">
-          <NavLinkContainer>
-            <Bell src={bell} alt="Notification Bell icon" />
-          </NavLinkContainer>
-        </NavLink>
-        <div style={{ position: "relative" }}>
-          <Avatar src={avatar} alt="Avatar" onClick={handleDropdownToggle} />
-          {showDropdown && (
-            <DropdownMenu>
-              <DropdownMenuItem>
-                <User src={user} alt="User" />
-                <NavLink to="/user/me">
-                  <DropdownMenuItemText onClick={handleProfileClick}>
-                    Profile
-                  </DropdownMenuItemText>
-                </NavLink>
-              </DropdownMenuItem>
-              <DropdownMenuItem>
-                <Login src={login} alt="Login Icon" />
-                <NavLink to="/">
-                  <DropdownMenuItemText onClick={handleLogoutClick}>
-                    Logout
-                  </DropdownMenuItemText>
-                </NavLink>
-              </DropdownMenuItem>
-            </DropdownMenu>
-          )}
-        </div>
+      <NavGroupLogo to="/">
+        <NavLogoIcon src={logoImage} alt="motion logo" />
+        <NavLogoText>Motion</NavLogoText>
+      </NavGroupLogo>
 
-        <NavLink to="/">
-          <Menu src={menu} alt="Menu" />
-        </NavLink>
-      </RightHeaderNav>
+      <NavGroupLink to="/feed">
+        <NavItemIcon src={postsImage} alt="posts icon" />
+        <NavItemText>Posts</NavItemText>
+      </NavGroupLink>
+
+      <NavGroupLink to="/">
+        <NavItemIcon src={findFriends} alt="find friends icon" />
+        <NavItemText>Find Friends</NavItemText>
+      </NavGroupLink>
+
+      <Bell src={bell} alt="notification bell icon" />
+
+      <NavGroupAvatar>
+        <Avatar src={avatar} alt="Avatar" onClick={handleDropdownToggle} />
+        {showDropdown && <DropDownMenu />}
+      </NavGroupAvatar>
+
+      <NavItemIcon src={menu} alt="Menu" />
     </HeaderContainer>
   );
 };
