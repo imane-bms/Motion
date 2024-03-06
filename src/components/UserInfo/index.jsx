@@ -18,8 +18,8 @@ import jennifer from "../../assets/images/users/jennifer.png";
 import { UserInfoContainer } from "../UserProfilePage/styles";
 import UserAxios from "../../axios";
 import { useEffect, useState } from "react";
-
-const UserInfo = () => {
+// still working on it
+const UserInfo = ({userID}) => {
   //store current user's data
   const [currentUserData, setCurrentUserData] = useState([]);
 

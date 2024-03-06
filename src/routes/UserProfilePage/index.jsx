@@ -7,19 +7,13 @@ import UserInfo from "../UserInfo";
 const UserProfilePage = () => {
   const { userID } = useParams();
 
-  const currentUserId = "current_user_id";
-  const canEdit = currentUserId === userID;
-
-  // const handleEditing = () => {
-  //   // onEditingMode; // set editing mode to true
-  //   navigate("/user/me/edit");
-  // };
+  
   return (
     <>
       <Cover />
       <UserSectionContainer>
-        {/* pass prop to control if user can edit */}
-        <UserInfo canEdit={canEdit} />
+       
+        <UserInfo userID={userID}/>
       </UserSectionContainer>
       <PostsList />
     </>
