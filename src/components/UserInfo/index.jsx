@@ -40,7 +40,7 @@ const UserInfo = () => {
     { id: 6, name: "gaming" },
     { id: 7, name: "painting" },
   ];
-
+  //hhh
   //----- need to think how to update hobbies when user edits them------
   // const hobbies = currentUserData.things_user_likes;
 
