@@ -1,8 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
-import statsSlice from "./slices/statsSlice";
+import userReducer from './slices/userSlice'
 
-export const store = configureStore({
-  reducer: {
-    stats: statsSlice,
-  },
-});
+const store = configureStore({
+    reducer: {
+        user: userReducer,
+    }
+})
+
+export default store

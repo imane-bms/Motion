@@ -1,10 +1,8 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Layout from "./Layout";
-import NotFound from "./NotFound";
-import UserInfo from "../components/UserInfo";
-// import UserEdit from "../components/UserEdit";
+import { BrowserRouter, Route, Routes} from "react-router-dom";
+import Login from "./AuthPage";
 import Feed from "./Feed";
-import SignIn from "./AuthPage/SignIn";
+import ProtectedRoutes from "./ProtectedRoutes";
+
 
 import UserEditPage from "../components/UserEditPage";
 import UserProfilePage from "../components/UserProfilePage";
@@ -13,22 +11,15 @@ const Router = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route element={<Layout />}>
-          <Route path="user/me" element={<UserProfilePage />} />
-          <Route path="user/me/edit" element={<UserEditPage />} />
-
-          <Route path="/signin" element={<SignIn />} />
-          {/* <Route path="/shop" element={<Shop />} /> */}
-          {/* protected route */}
-
-          {/* <Route path="user/me" element={<UserInfo />} /> */}
-          {/* <Route path="user/me/edit" element={<UserEdit />} /> */}
-
-          <Route path="user/me/posts" element={<Feed />} />
-          <Route path="user/:userID" element={<UserInfo />} />
-          {/* protected route */}
+      
+        <Route path="/" element={<Login />} />
+        <Route element={<ProtectedRoutes />}>
+        <Route path="/feed" element={<Feed />} />
         </Route>
-        <Route path="*" element={<NotFound />} />
+        
+          {/* <Route path="/shop" element={<Shop />} /> */}
+
+        
       </Routes>
     </BrowserRouter>
   );

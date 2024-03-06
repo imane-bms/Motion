@@ -24,7 +24,7 @@ import {
 
 
 
-const SignUpStepSecondRight = () => {
+const SignUpStepSecondRight = (props) => {
   return (
     <RightRoot>
         <PageH1>Congratulations!</PageH1>
@@ -42,11 +42,14 @@ const SignUpStepSecondRight = () => {
         
         <EmailSent>
           We’ve sent a confirmation code to your email 
-          johnsmith@gmail.com
+        <br/> {props.email}
         </EmailSent>
       
         <ButtonFrame>
-            <GradientButtonBetterStyled><GradientButtonText>CONTINUE
+            <GradientButtonBetterStyled onClick={() => {
+          props.setLogged("verification");
+          }}>
+            <GradientButtonText>CONTINUE
             </GradientButtonText></GradientButtonBetterStyled>
 
             <PageDots>

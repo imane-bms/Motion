@@ -139,8 +139,7 @@ export const LogoContainer = styled.div`
 export const SocialIcon = styled.img`
   height: 2.3rem;
   width: 2.3rem;
-  position: relative;
-  /* min-height: 2.5rem; */
+  position: relative; 
 `;
 
 export const SocialLinks = styled.div`
@@ -173,6 +172,7 @@ export const Description = styled.p`
   font-weight: 400;
   text-align: center;
   font-size: 1rem;
+  font-weight: 200;
 
   /* margin: 0;
   align-self: stretch;
