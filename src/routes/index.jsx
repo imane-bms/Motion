@@ -4,8 +4,8 @@ import NotFound from "./NotFound";
 import Login from "./AuthPage";
 import Feed from "./Feed";
 import ProtectedRoutes from "./ProtectedRoutes";
-import UserProfilePage from "../components/UserProfilePage";
-import UserEditPage from "../components/UserEditPage";
+import UserProfilePage from "./UserProfilePage";
+import UserEditPage from "./UserEditPage";
 
 const Router = () => {
   return (
@@ -17,7 +17,7 @@ const Router = () => {
             <Route path="feed" element={<Feed />} />
             <Route path="user/me" element={<UserProfilePage />} />
             <Route path="user/me/edit" element={<UserEditPage />} />
-            <Route path="user/:id" element={<UserProfilePage />} />
+            <Route path="user/:userID" element={<UserProfilePage />} />
           </Route>
         </Route>
         <Route path="*" element={<NotFound />} />
