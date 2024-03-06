@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes} from "react-router-dom";
-//import SignIn from "./AuthPage";
-import SignUp from "./AuthPage/SignUp"
-import Login from "./AuthPage"
+import Login from "./AuthPage";
+import Feed from "./Feed";
+import ProtectedRoutes from "./ProtectedRoutes";
 
 
 
@@ -11,7 +11,9 @@ const Router = () => {
       <Routes>
       
         <Route path="/" element={<Login />} />
-        <Route path="/signup" element={<SignUp />} />
+        <Route element={<ProtectedRoutes />}>
+        <Route path="/feed" element={<Feed />} />
+        </Route>
         
           {/* <Route path="/shop" element={<Shop />} /> */}
 

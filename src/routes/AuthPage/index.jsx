@@ -90,8 +90,7 @@ const Login = () => {
         });
 
   
-        // setLogged("login");
-        // navigate("/");
+       
         const res = await UserAxios.post("/auth/token/", {
             email: email,
             password: password,
