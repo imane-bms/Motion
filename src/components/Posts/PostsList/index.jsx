@@ -57,6 +57,7 @@ const posts = [
   },
 ];
 
+// eslint-disable-next-line react/prop-types
 function PostsList({ canAddPosts = true }) {
   return (
     <SectionContainer>
