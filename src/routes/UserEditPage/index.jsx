@@ -1,9 +1,9 @@
 import { Container, Cover, TopDiv } from "./styles";
 import coverBg from "../../assets/images/coverBg.png";
-import UserEdit from "../UserEdit";
 import { SmallTopDiv } from "./styles";
 import camera from "../../assets/images/camera.png";
 import { Image } from "./styles";
+import UserEdit from "../../components/UserEdit";
 const UserEditPage = () => {
   return (
     <Container>

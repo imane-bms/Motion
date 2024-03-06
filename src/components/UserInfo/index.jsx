@@ -15,13 +15,38 @@ import {
 } from "./styles";
 
 import jennifer from "../../assets/images/users/jennifer.png";
-import { UserInfoContainer } from "../UserProfilePage/styles";
 import UserAxios from "../../axios";
 import { useEffect, useState } from "react";
+import { UserInfoContainer } from "../../routes/UserProfilePage/styles";
 // still working on it
-const UserInfo = ({userID}) => {
+const UserInfo = ({ userID }) => {
   //store current user's data
   const [currentUserData, setCurrentUserData] = useState([]);
+  //to check if the user is the one logged in
+  const [isCurrentUser, setIsCurrentUser] = useState(false);
+
+  const navigate = useNavigate();
+  //fetch the data according to user id
+  const getUserData = async () => {
+    try {
+      const response = await UserAxios.get(`/users/${userID}`);
+      const userData = response.data;
+      setCurrentUserData(userData);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  useEffect(() => {
+    getUserData();
+  }, [userID]);
+
+  // check if the current userID matches the userID in the url
+
+  useEffect(() => {
+    // get the id of the current user (loggedin) from the auth
+    const loggedInUserID = currentUserData.id;
+    setIsCurrentUser(loggedInUserID === userID);
+  }, [userID]);
 
   const statistics = useSelector((state) => [
     { title: "Posts", value: state.stats.posts },
@@ -44,7 +69,6 @@ const UserInfo = ({userID}) => {
   //----- need to think how to update hobbies when user edits them------
   // const hobbies = currentUserData.things_user_likes;
 
-  const navigate = useNavigate();
   const handleEditing = () => {
     navigate("/user/me/edit");
   };

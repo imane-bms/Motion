@@ -4,8 +4,8 @@ import NotFound from "./NotFound";
 import Login from "./AuthPage";
 import Feed from "./Feed";
 import ProtectedRoutes from "./ProtectedRoutes";
-import UserProfilePage from "../components/UserProfilePage";
-import UserEditPage from "../components/UserEditPage";
+import UserProfilePage from "./UserProfilePage";
+import UserEditPage from "./UserEditPage";
 
 const Router = () => {
   return (
