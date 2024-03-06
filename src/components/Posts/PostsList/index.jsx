@@ -62,7 +62,7 @@ function PostsList() {
     <SectionContainer>
       <PostsContainer>
         <ResponsiveMasonry
-          columnsCountBreakPoints={{ 350: 1, 900: 2, 1281: 3 }}
+          columnsCountBreakPoints={{ 350: 1, 768: 2}}
         >
           <Masonry gutter="2rem">
             <NewPostForm />

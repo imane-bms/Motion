@@ -1,6 +1,4 @@
-import { Container, Cover, TopDiv } from "./styles";
-import coverBg from "../../assets/images/coverBg.png";
-
+import { Cover, UserSectionContainer } from "./styles";
 import { useNavigate } from "react-router-dom";
 import PostsList from "../Posts/PostsList";
 import UserInfo from "../UserInfo";
@@ -11,13 +9,13 @@ const UserProfilePage = () => {
     navigate("/user/me/edit");
   };
   return (
-    <Container>
-      <Cover src={coverBg} alt="cover-bg" />
-      <TopDiv>
+    <>
+      <Cover />
+      <UserSectionContainer>
         <UserInfo onEditingMode={handleEditing} />
-      </TopDiv>
+      </UserSectionContainer>
       <PostsList />
-    </Container>
+    </>
   );
 };
 

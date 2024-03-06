@@ -20,6 +20,8 @@ export const Overlay = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  z-index: 99;
 `;
 
 export const Popup = styled.div`
@@ -30,6 +32,8 @@ export const Popup = styled.div`
   border-radius: 5px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   position: relative;
+
+  z-index: 999;
 `;
 
 export const CloseButton = styled.button`
