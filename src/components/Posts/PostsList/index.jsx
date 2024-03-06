@@ -57,7 +57,7 @@ const posts = [
   },
 ];
 
-function PostsList() {
+function PostsList({ canAddPosts = true }) {
   return (
     <SectionContainer>
       <PostsContainer>
@@ -65,7 +65,7 @@ function PostsList() {
           columnsCountBreakPoints={{ 350: 1, 768: 2}}
         >
           <Masonry gutter="2rem">
-            <NewPostForm />
+          {canAddPosts && <NewPostForm />}
 
             {posts.map((post) => (
               <SinglePost key={post.id} {...post} />
