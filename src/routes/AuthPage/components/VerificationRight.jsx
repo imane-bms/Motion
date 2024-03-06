@@ -19,7 +19,7 @@ import {
 
 
 
-const VerificationRight = () => {
+const VerificationRight = (props) => {
     return (
         <RightRoot>
             <PageH1>Verification</PageH1>
@@ -27,26 +27,64 @@ const VerificationRight = () => {
             <StyledForm>
 
             <InputGroupForVerification>
-                <BetterInput type="text" placeholder="Validation Code" required />
+                <BetterInput 
+                value={props.code}
+                onChange={(e) => props.setCode(e.target.value)}
+                type="text" 
+                placeholder="Validation code"                 
+                required />
             </InputGroupForVerification>
 
             <InputGroupForVerification>
-                <BetterInput type="email" placeholder="Email" required /> 
-               <BetterInput type="text" placeholder="Username" required />
+                <BetterInput
+                value={props.email}
+                onChange={(e) => props.setEmail(e.target.value)}
+                type="email" 
+                placeholder="Email"                
+                required /> 
+               <BetterInput
+               value={props.userName}
+               onChange={(e) => props.setUserName(e.target.value)}
+               type="text" 
+               placeholder="Username" 
+               required
+               />
             </InputGroupForVerification>
 
             <InputGroupForVerification>
-                <BetterInput type="text" placeholder="First Name" required />
-                <BetterInput type="text" placeholder="Last Name" required />
+                <BetterInput
+                value={props.firstName}
+                onChange={(e) => props.setFirstName(e.target.value)}
+                type="text" 
+                placeholder="First Name" 
+                required />
+                <BetterInput 
+                value={props.lastName}
+                onChange={(e) => props.setLastName(e.target.value)}
+                type="text" 
+                placeholder="Last Name" 
+                required />
             </InputGroupForVerification>
 
             <InputGroupForVerification>
-                <BetterInput type="password" placeholder="Password" required />
-                <BetterInput type="password" placeholder="Password Repeat" required />
+                <BetterInput
+                value={props.password}
+                onChange={(e) => props.setPassword(e.target.value)}
+                type="password" 
+                placeholder="Password"
+                required />
+                <BetterInput
+                value={props.repeatPassword}
+                onChange={(e) => props.setRepeatPassword(e.target.value)}
+                type="password" 
+                placeholder="Password Repeat" 
+                required />
             </InputGroupForVerification>
             </StyledForm>
             <ButtonFrame>
-                <GradientButtonBetterStyled><GradientButtonText>CONTINUE
+                <GradientButtonBetterStyled
+                onClick={props.submitRegisterForm}
+                ><GradientButtonText>COMPLETE
                 </GradientButtonText></GradientButtonBetterStyled>
             </ButtonFrame>
 

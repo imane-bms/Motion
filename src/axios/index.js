@@ -2,13 +2,13 @@ import axios from 'axios'
 
 const BASE_URL = 'https://motion.propulsion-home.ch/backend/api'
 
-const AxiosUser = axios.create({
+const UserAxios = axios.create({
     baseURL: BASE_URL
 })
 
 
-export const getMyProfileData = async (token) => {
-        return await AxiosUser.get('/users/me/', {headers: {
+export const getMyUserDatas = async (token) => {
+        return await UserAxios.get('/users/me/', {headers: {
         Authorization: `Bearer ${token}`
       }})
 }
@@ -17,4 +17,4 @@ export const getMyProfileData = async (token) => {
 
 
 
-export default AxiosUser
+export default UserAxios

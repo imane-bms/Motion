@@ -21,28 +21,34 @@ import {
   SignUpText
   } from "./stylesRight";
 
-  
-  const SignUpRight = () => {
+
+  const SignUpRight = (props) => {
     return (
 
     <RightRoot>
       <NoUserGroup>
         <NoUserQuestion>{'Already have an account?'}</NoUserQuestion>
-        <SignUpButton as={SignUpText} to="/">SIGN IN</SignUpButton>
-      </NoUserGroup>
+          <SignUpButton as={SignUpText} onClick={() => props.setLogged("login")}>
+          SIGN IN
+          </SignUpButton>
+        </NoUserGroup>
 
       <AuthForm>
         <PageH1>Sign Up</PageH1>
+        
 
         <Inputs>
           <InputGroup>
             <GroupIcon alt="" src={emailIcon} />
             
-            <Input type="email" placeholder="Email" />
+            <Input 
+              value={props.email}
+              onChange={(e) => props.setEmail(e.target.value)}
+              type="email" placeholder="Email" required/>
           </InputGroup>  
         </Inputs>
         <ButtonFrame>
-            <GradientButtonBetterStyled><GradientButtonText>CONTINUE
+            <GradientButtonBetterStyled onClick={props.submitEmailForm}><GradientButtonText>CONTINUE
             </GradientButtonText></GradientButtonBetterStyled>
 
             <PageDots>

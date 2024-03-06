@@ -1,6 +1,6 @@
 const Spinner = () => {
     return (
 <div className="spiner">
- <h1>Spiner</h1>
+ <h1>Spinner</h1>
 </div>) };
 export default Spinner
