@@ -1,19 +1,21 @@
-import UserEdit from "../../components/UserEdit";
-import UserInfo from "../../components/UserInfo";
-import { Route, Switch } from "react-router-dom";
+// import { useState } from "react";
+// import UserEdit from "../../components/UserEdit";
+// import UserInfo from "../../components/UserInfo";
+// import PostsList from "../../components/Posts/PostsList";
 
-const UserPage = () => {
-  return (
-    // Switch only renders one route
-    <Switch>
-      <Route path="/userInfo">
-        <UserInfo />
-      </Route>
-      <Route path="/userEdit">
-        <UserEdit />
-      </Route>
-    </Switch>
-  );
-};
+// const UserPage = () => {
+//   const [isEditing, setIsEditing] = useState(false);
 
-export default UserPage;
+//   const handleEditing = () => setIsEditing(true);
+//   return (
+//     <div>
+//       {/* render UserInfo if not on editing mode */}
+//       {!isEditing && <UserInfo onEditingMode={handleEditing} />}
+//       {/* render UserEdit if on editing mode */}
+//       {isEditing && <UserEdit />}
+//       <PostsList />
+//     </div>
+//   );
+// };
+
+// export default UserPage;

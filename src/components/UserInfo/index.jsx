@@ -1,9 +1,23 @@
-import { Link } from "react-router-dom";
-import { DivWithShadow, SimpleButton } from "../../styles";
+import { useNavigate } from "react-router-dom";
+import { SimpleButton } from "../../styles";
+
 import { useSelector } from "react-redux";
 import StatsCard from "../Stats";
+import {
+  ContactsDiv,
+  Hobbie,
+  HobbiesDiv,
+  Image,
+  Stats,
+  UpperRightDiv,
+  UserInfoDetailsBlock,
+  UserInfoFaceBlock,
+} from "./styles";
 
-const UserInfo = () => {
+import jennifer from "../../assets/images/users/jennifer.png";
+import { UserInfoContainer } from "../UserProfilePage/styles";
+
+const UserInfo = (/*{ onEditingMode }*/) => {
   const statistics = useSelector((state) => [
     { title: "Posts", value: state.stats.posts },
     { title: "Likes", value: state.stats.likes },
@@ -12,54 +26,77 @@ const UserInfo = () => {
     { title: "Following", value: state.stats.following },
   ]);
 
+  const hobbies = [
+    { id: 1, name: "hiking" },
+    { id: 2, name: "coding" },
+    { id: 3, name: "reading" },
+    { id: 4, name: "gardening" },
+    { id: 5, name: "cooking" },
+    { id: 6, name: "gaming" },
+    { id: 7, name: "painting" },
+  ];
+
+  const navigate = useNavigate();
+  const handleEditing = () => {
+    // onEditingMode; // set editing mode to true
+    navigate("/user/me/edit");
+  };
+
   return (
-    <DivWithShadow>
-      <section className="left-profileInfo">
-        <img alt="avatar" />
-        <h2>User Name</h2>
-        <p>City, Country</p>
+    <UserInfoContainer>
+      <UserInfoFaceBlock>
+        <Image src={jennifer} alt="avatar" />
+        <h2>Jennifer Smith</h2>
+        <p>Berlin, Germany</p>
         {/* when clicking on the btn, change path */}
-        <Link to="userEdit">
-          <SimpleButton> EDIT PROFILE</SimpleButton>
-        </Link>
-      </section>
-      <section className="right-profileInfo">
-        <div className="profileInfo">
-          <div className="about">
-            <p>About</p>
+
+        <SimpleButton onClick={handleEditing}> EDIT PROFILE</SimpleButton>
+      </UserInfoFaceBlock>
+
+      <UserInfoDetailsBlock>
+        <UpperRightDiv>
+          <section>
+            <h4>About</h4>
             <p>
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque
               nostrum velit error quisquam. Vel quas fugiat sequi alias
-              praesentium animi fuga, debitis dolore blanditiis id ea cumque,
-              nesciunt voluptatibus placeat.
+              praesentium animi
             </p>
+
+            <ContactsDiv>
+              <div>
+                <h4>Email</h4>
+                <p>jennifersmith@gmail.com</p>
+              </div>
+              <div>
+                <h4>Phone</h4>
+                <p>123-456-7890</p>
+              </div>
+            </ContactsDiv>
+          </section>
+          <div>
+            <h4>Things I Like </h4>
+            <HobbiesDiv>
+              {hobbies.map((hobby) => (
+                <Hobbie key={hobby.id}>{hobby.name}</Hobbie>
+              ))}
+            </HobbiesDiv>
           </div>
-          {/* hobbies from store? */}
-          <div className="things-i-like">
-            <p>somehting</p>
-            <p>somehting</p>
-            <p>somehting</p>
-          </div>
-          <div className="contact-email">
-            <p>Email</p>
-            <p>User Email</p>
-          </div>
-          <div className="contact-phone">
-            <p>Phone</p>
-            <p>User Phone</p>
-          </div>
-          <div className="stats">
-            {statistics.map((statistic, index) => (
-              <StatsCard
-                key={index}
-                title={statistic.title}
-                value={statistic.value}
-              />
-            ))}
-          </div>
-        </div>
-      </section>
-    </DivWithShadow>
+        </UpperRightDiv>
+
+        {/* hobbies from store? */}
+
+        <Stats>
+          {statistics.map((statistic, index) => (
+            <StatsCard
+              key={index}
+              title={statistic.title}
+              value={statistic.value}
+            />
+          ))}
+        </Stats>
+      </UserInfoDetailsBlock>
+    </UserInfoContainer>
   );
 };
 

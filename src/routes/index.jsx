@@ -4,6 +4,8 @@ import Feed from "./Feed";
 import ProtectedRoutes from "./ProtectedRoutes";
 
 
+import UserEditPage from "../components/UserEditPage";
+import UserProfilePage from "../components/UserProfilePage";
 
 const Router = () => {
   return (
