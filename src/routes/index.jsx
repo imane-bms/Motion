@@ -3,6 +3,7 @@ import Login from "./AuthPage";
 import Feed from "./Feed";
 import ProtectedRoutes from "./ProtectedRoutes";
 import NotFound from "./NotFound";
+import Layout from "./Layout";
 
 
 //import UserEditPage from "../components/UserEditPage";
@@ -14,11 +15,15 @@ const Router = () => {
       <Routes>
       
         <Route path="/" element={<Login />} />
+        <Route element={<Layout />}>
         <Route element={<ProtectedRoutes />}>
+
         <Route path="/feed" element={<Feed />} />
-        </Route>
-        <Route path="*" element={<NotFound />} /> 
+        
         <Route path="/user/me" element={<UserProfilePage />} />
+        <Route path="*" element={<NotFound />} /> 
+        </Route>
+        </Route>
       </Routes>
     </BrowserRouter>
   );

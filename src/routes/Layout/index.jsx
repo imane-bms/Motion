@@ -10,14 +10,14 @@ import Header from "../../components/Header";
 // import UserPage from "../UserPage";
 
 function Layout() {
-  const location = useLocation();
+  //const location = useLocation();
   // check if the current route is sign in page
-  const isSignInPage = location.pathname === "/signin";
+ // const isSignInPage = location.pathname === "/signin";
   return (
     <>
-      {!isSignInPage && <Header />}
+      {/*!isSignInPage && <Header />*/}
       {/* <UserPage /> */}
-      {/* <Header /> */}
+       <Header /> 
       {/* <main><Main /></main> */}
       <Outlet />
       {/* <Footer /> */}

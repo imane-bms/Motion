@@ -81,7 +81,7 @@ const Header = () => {
             <DropdownMenu>
               <DropdownMenuItem>
                 <User src={user} alt="User" />
-                <NavLink to="/">
+                <NavLink to="/user/me">
                   <DropdownMenuItemText onClick={handleProfileClick}>
                     Profile
                   </DropdownMenuItemText>
