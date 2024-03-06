@@ -14,6 +14,7 @@ import {
   SocialLinksContainer,
   StoreContainer,
   StoreIcon,
+  PageH1,
 } from "./stylesLeft";
 import { LeftRoot } from "../styles";
 
@@ -23,7 +24,7 @@ const LeftAuthor = () => {
       <LogoContainer>
         <Logo>
           <img loading="lazy" alt="" src={logo} />
-          <h1>Motion</h1>
+          <PageH1>Motion</PageH1>
         </Logo>
 
         <Description>
@@ -42,9 +43,9 @@ const LeftAuthor = () => {
 
       <SocialLinksContainer>
         <SocialLinks>
-          <SocialIcon loading="lazy" alt="" src={instagram} />
           <SocialIcon loading="lazy" alt="" src={twitter} />
           <SocialIcon loading="lazy" alt="" src={facebook} />
+          <SocialIcon loading="lazy" alt="" src={instagram} />
         </SocialLinks>
         <Copyright>{`© Motion 2018. All rights reserved. `}</Copyright>
       </SocialLinksContainer>
