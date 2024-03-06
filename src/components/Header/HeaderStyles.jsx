@@ -1,5 +1,9 @@
 import styled from "styled-components";
-import { NavLink } from "react-router-dom";
+import { NavLink as RouterNavLink } from "react-router-dom";
+
+export const NavLink = styled(RouterNavLink)`
+  text-decoration: none;
+`;
 
 export const HeaderContainer = styled.header`
   width: 100%;
@@ -25,15 +29,13 @@ export const LeftHeaderNav = styled.nav`
 export const Logo = styled.img`
   margin-right: 10px;
   color: black;
-  text-decoration: none;
   font-weight: bold;
   cursor: pointer;
 `;
 
 export const MotionText = styled(NavLink)`
   font-weight: bold;
-  color: black;
-  text-decoration: none;
+  color: #000000;
   display: flex;
   align-items: center;
   margin-right: 100px;
@@ -42,14 +44,12 @@ export const MotionText = styled(NavLink)`
 export const PostsLogo = styled.img`
   margin-right: 10px;
   height: 18px;
-  text-decoration: none;
   cursor: pointer;
 `;
 
 export const PostsText = styled(NavLink)`
   font-weight: bold;
   color: #000000;
-  text-decoration: none;
   display: flex;
   align-items: center;
   margin-right: 60px;
@@ -58,7 +58,6 @@ export const PostsText = styled(NavLink)`
 export const FindFriendLogo = styled.img`
   margin-right: 10px;
   color: black;
-  text-decoration: none;
   font-weight: bold;
   cursor: pointer;
 `;
@@ -66,7 +65,6 @@ export const FindFriendLogo = styled.img`
 export const Friends = styled(NavLink)`
   font-weight: bold;
   color: #000000;
-  text-decoration: none;
   display: flex;
   align-items: center;
   margin-right: 40px;
@@ -81,7 +79,6 @@ export const RightHeaderNav = styled.nav`
 export const Bell = styled.img`
   margin-right: 30px;
   color: black;
-  text-decoration: none;
   font-weight: bold;
   cursor: pointer;
 `;
@@ -89,7 +86,6 @@ export const Bell = styled.img`
 export const Avatar = styled.img`
   margin-right: 30px;
   color: black;
-  text-decoration: none;
   font-weight: bold;
   cursor: pointer;
 `;
@@ -97,10 +93,10 @@ export const Avatar = styled.img`
 export const Menu = styled.img`
   margin-right: 10px;
   color: black;
-  text-decoration: none;
   font-weight: bold;
   cursor: pointer;
 `;
+
 //Dropdown menu from avatar
 export const DropdownMenu = styled.div`
   position: absolute;
@@ -124,20 +120,23 @@ export const DropdownMenuItem = styled.div`
 `;
 
 export const DropdownMenuItemText = styled.span`
-  font-weight: normal;
+  font-weight: bold;
   color: #000000;
   cursor: pointer;
-  text-decoration: none;
   display: flex;
   align-items: center;
 `;
 
 export const Login = styled.img`
   margin-right: 30px;
+  color: black;
+  font-weight: bold;
   cursor: pointer;
 `;
 
 export const User = styled.img`
   margin-right: 30px;
+  color: black;
+  font-weight: bold;
   cursor: pointer;
 `;

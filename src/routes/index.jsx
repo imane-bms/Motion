@@ -29,6 +29,8 @@ const Router = () => {
           {/* protected route */}
         </Route>
         <Route path="*" element={<NotFound />} />
+        <Route path="/logout" element={<NotFound />} />
+        <Route path="/user/me" element={<UserProfilePage />} />
       </Routes>
     </BrowserRouter>
   );

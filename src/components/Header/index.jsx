@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-// import { useHistory } from "react-router-dom";
-// import { NavLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import {
   HeaderContainer,
   NavLinkContainer,
@@ -17,6 +16,7 @@ import {
   DropdownMenuItemText,
   Login,
   User,
+  NavLink, // New NavLink
 } from "./HeaderStyles";
 import logoImage from "../../assets/images/logo.png";
 import postsImage from "../../assets/images/posts_logo.png";
@@ -32,78 +32,76 @@ import { Friends } from "./HeaderStyles";
 
 const Header = () => {
   const [showDropdown, setShowDropdown] = useState(false);
-  {
-    /* const history = useHistory(); // Add to Initialize useHistory */
-  }
+  const navigate = useNavigate();
   const handleDropdownToggle = () => {
     setShowDropdown(!showDropdown);
   };
 
-  {
-    /*
-const handleProfileClick = () => {
-    history.push("/profile"); // ADD TO NAVIGATE TO PROFILE PAGE
+  const handleProfileClick = () => {
+    navigate("*"); //Naigate
   };
 
   const handleLogoutClick = () => {
-    
+    navigate("*"); //Navigate
   };
-
-  CALL FUNCTION BELOW IN RETURN
-  1.
-  <User src={user} alt="User" />
-  <DropdownMenuItemText onClick={handleProfileClick}>
-  2.
-  <Login src={login} alt="Login Icon" />
-  <DropdownMenuItemText onClick={handleLogoutClick}>
-
-*/
-  }
 
   return (
     <HeaderContainer>
       <LeftHeaderNav>
         {/* Left Header */}
-        <NavLinkContainer to="/">
-          <Logo src={logoImage} alt="Logo" />
-          <MotionText>Motion</MotionText>
-        </NavLinkContainer>
-        <NavLinkContainer to="/">
-          <PostsLogo src={postsImage} alt="Posts Logo" />
-          <PostsText>Posts</PostsText>
-        </NavLinkContainer>
-        <NavLinkContainer to="/">
-          <FindFriendLogo src={findFriends} alt="Find friends Icon" />
-          <Friends>Find Friends</Friends>
-        </NavLinkContainer>
+        <NavLink to="/">
+          <NavLinkContainer>
+            <Logo src={logoImage} alt="Logo" />
+            <MotionText>Motion</MotionText>
+          </NavLinkContainer>
+        </NavLink>
+        <NavLink to="/">
+          <NavLinkContainer>
+            <PostsLogo src={postsImage} alt="Posts Logo" />
+            <PostsText>Posts</PostsText>
+          </NavLinkContainer>
+        </NavLink>
+        <NavLink to="/">
+          <NavLinkContainer>
+            <FindFriendLogo src={findFriends} alt="Find friends Icon" />
+            <Friends>Find Friends</Friends>
+          </NavLinkContainer>
+        </NavLink>
       </LeftHeaderNav>
       <RightHeaderNav>
         {/* Right Header */}
-        <NavLinkContainer to="/">
-          <Bell src={bell} alt="Notification Bell icon" />
-        </NavLinkContainer>
+        <NavLink to="/">
+          <NavLinkContainer>
+            <Bell src={bell} alt="Notification Bell icon" />
+          </NavLinkContainer>
+        </NavLink>
         <div style={{ position: "relative" }}>
           <Avatar src={avatar} alt="Avatar" onClick={handleDropdownToggle} />
           {showDropdown && (
             <DropdownMenu>
               <DropdownMenuItem>
                 <User src={user} alt="User" />
-                <DropdownMenuItemText onClick={() => history.push("/profile")}>
-                  Profile
-                </DropdownMenuItemText>
+                <NavLink to="/">
+                  <DropdownMenuItemText onClick={handleProfileClick}>
+                    Profile
+                  </DropdownMenuItemText>
+                </NavLink>
               </DropdownMenuItem>
               <DropdownMenuItem>
                 <Login src={login} alt="Login Icon" />
-                <DropdownMenuItemText onClick={() => history.push("/logout")}>
-                  Logout
-                </DropdownMenuItemText>
+                <NavLink to="/">
+                  <DropdownMenuItemText onClick={handleLogoutClick}>
+                    Logout
+                  </DropdownMenuItemText>
+                </NavLink>
               </DropdownMenuItem>
             </DropdownMenu>
           )}
         </div>
-        <NavLinkContainer to="/">
+
+        <NavLink to="/">
           <Menu src={menu} alt="Menu" />
-        </NavLinkContainer>
+        </NavLink>
       </RightHeaderNav>
     </HeaderContainer>
   );
