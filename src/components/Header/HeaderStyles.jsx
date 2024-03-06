@@ -101,3 +101,43 @@ export const Menu = styled.img`
   font-weight: bold;
   cursor: pointer;
 `;
+//Dropdown menu from avatar
+export const DropdownMenu = styled.div`
+  position: absolute;
+  top: 100%;
+  margin: 15px;
+  right: 0;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  z-index: 10;
+`;
+
+export const DropdownMenuItem = styled.div`
+  display: flex;
+  align-items: center;
+  padding: 10px 30px;
+  cursor: pointer;
+  &:hover {
+    background-color: #f0f0f0;
+  }
+`;
+
+export const DropdownMenuItemText = styled.span`
+  font-weight: normal;
+  color: #000000;
+  cursor: pointer;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+`;
+
+export const Login = styled.img`
+  margin-right: 30px;
+  cursor: pointer;
+`;
+
+export const User = styled.img`
+  margin-right: 30px;
+  cursor: pointer;
+`;
