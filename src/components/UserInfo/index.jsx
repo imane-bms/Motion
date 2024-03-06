@@ -16,8 +16,13 @@ import {
 
 import jennifer from "../../assets/images/users/jennifer.png";
 import { UserInfoContainer } from "../UserProfilePage/styles";
+import UserAxios from "../../axios";
+import { useEffect, useState } from "react";
 
-const UserInfo = (/*{ onEditingMode }*/) => {
+const UserInfo = () => {
+  //store current user's data
+  const [currentUserData, setCurrentUserData] = useState([]);
+
   const statistics = useSelector((state) => [
     { title: "Posts", value: state.stats.posts },
     { title: "Likes", value: state.stats.likes },
@@ -36,41 +41,66 @@ const UserInfo = (/*{ onEditingMode }*/) => {
     { id: 7, name: "painting" },
   ];
 
+  //----- need to think how to update hobbies when user edits them------
+  // const hobbies = currentUserData.things_user_likes;
+
   const navigate = useNavigate();
   const handleEditing = () => {
-    // onEditingMode; // set editing mode to true
     navigate("/user/me/edit");
   };
+
+  // function to fetch user data from API
+  const getUserMeData = async (token) => {
+    try {
+      const response = await UserAxios.get("/users/me/", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      const userData = response.data;
+      setCurrentUserData(userData);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    getUserMeData(
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA5OTAwODA4LCJpYXQiOjE3MDk3MjgwMDgsImp0aSI6ImE2NGRkOTVmZTUzNTQxZTY4NmMyZDkzMTBjY2ZjYThkIiwidXNlcl9pZCI6MzM4Nn0.cIn4WsmKWB8yl425xgW5GFGAJLK_k9lyyYzJMpMFdY4"
+    );
+  }, []);
+  useEffect(() => {
+    console.log(currentUserData);
+  }, [currentUserData]);
 
   return (
     <UserInfoContainer>
       <UserInfoFaceBlock>
         <Image src={jennifer} alt="avatar" />
-        <h2>Jennifer Smith</h2>
-        <p>Berlin, Germany</p>
-        {/* when clicking on the btn, change path */}
-
+        <h2>
+          {currentUserData.first_name} {currentUserData.last_name}
+        </h2>
+        <p>{currentUserData.location}</p>
+        {/* Render the "Edit Profile" button only if canEdit is true */}
+        {/* {canEdit && ( */}
         <SimpleButton onClick={handleEditing}> EDIT PROFILE</SimpleButton>
+        {/*  )} */}
       </UserInfoFaceBlock>
 
       <UserInfoDetailsBlock>
         <UpperRightDiv>
           <section>
             <h4>About</h4>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque
-              nostrum velit error quisquam. Vel quas fugiat sequi alias
-              praesentium animi
-            </p>
+            <p>{currentUserData.about_me}</p>
 
             <ContactsDiv>
               <div>
                 <h4>Email</h4>
-                <p>jennifersmith@gmail.com</p>
+                <p>{currentUserData.email}</p>
               </div>
               <div>
                 <h4>Phone</h4>
-                <p>123-456-7890</p>
+                <p>{currentUserData.phone_number}</p>
               </div>
             </ContactsDiv>
           </section>
@@ -85,7 +115,7 @@ const UserInfo = (/*{ onEditingMode }*/) => {
         </UpperRightDiv>
 
         {/* hobbies from store? */}
-
+        {/* think how to update the stats */}
         <Stats>
           {statistics.map((statistic, index) => (
             <StatsCard

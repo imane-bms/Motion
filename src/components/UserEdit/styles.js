@@ -111,3 +111,18 @@ export const CustomSelect = styled.select`
   background-color: #fff;
   font-size: 16px;
 `;
+export const UpdateImageMenue = styled(DivWithShadow)`
+  width: 60%;
+  border: var(--color-gray-300);
+  height: 50%;
+  text-align: center;
+  padding: 0;
+`;
+
+export const TextHighlight = styled.p`
+  padding: 10px;
+  &:hover {
+    cursor: pointer;
+    background-color: var(--color-gray-300);
+  }
+`;

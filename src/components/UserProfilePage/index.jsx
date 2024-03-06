@@ -1,18 +1,25 @@
 import { Cover, UserSectionContainer } from "./styles";
-import { useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import PostsList from "../Posts/PostsList";
 import UserInfo from "../UserInfo";
+
+// import { useEffect, useState } from "react";
 const UserProfilePage = () => {
-  const navigate = useNavigate();
-  const handleEditing = () => {
-    // onEditingMode; // set editing mode to true
-    navigate("/user/me/edit");
-  };
+  const { userID } = useParams();
+
+  const currentUserId = "current_user_id";
+  const canEdit = currentUserId === userID;
+
+  // const handleEditing = () => {
+  //   // onEditingMode; // set editing mode to true
+  //   navigate("/user/me/edit");
+  // };
   return (
     <>
       <Cover />
       <UserSectionContainer>
-        <UserInfo onEditingMode={handleEditing} />
+        {/* pass prop to control if user can edit */}
+        <UserInfo canEdit={canEdit} />
       </UserSectionContainer>
       <PostsList />
     </>
