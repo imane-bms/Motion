@@ -21,11 +21,12 @@ const Login = () => {
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
-  
     
-    const [email, setEmail] = useState("jimod43468@artgulin.com");
+  //already registeres user: jimod43468@artgulin.com password: 123456
+    
+    const [email, setEmail] = useState("");
     const [userName, setUserName] = useState("");
-    const [password, setPassword] = useState("123456");
+    const [password, setPassword] = useState("");
     const [repeatPassword, setRepeatPassword] = useState("");
     const [code, setCode] = useState("");
     const [firstName, setFirstName] = useState("");

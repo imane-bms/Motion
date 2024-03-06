@@ -72,7 +72,8 @@ const VerificationRight = (props) => {
                 onChange={(e) => props.setPassword(e.target.value)}
                 type="password" 
                 placeholder="Password"
-                required />
+                required 
+                />
                 <BetterInput
                 value={props.repeatPassword}
                 onChange={(e) => props.setRepeatPassword(e.target.value)}
