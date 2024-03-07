@@ -10,14 +10,13 @@ import { LeftParent, SignInRoot } from './styles';
 import { useState, useEffect} from "react";
 import { useNavigate } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
-import { userLogin, userObject } from "../../store/slices/userSlice"
+import { setLoggedInViaForm, userLogin, userObject } from "../../store/slices/userSlice"
 
 
 const Login = () => {
-    useEffect(() => {
-      isLoggedin && navigate("/feed");
-    });
-  
+    // useEffect(() => {
+    //   isLoggedin && navigate("/feed");
+    // });
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -39,6 +38,14 @@ const Login = () => {
   
     //check it user is logged in
     const isLoggedin = useSelector((state) => state.user.token);
+    const loggedInViaForm = useSelector((state) => state.user.loggedInViaForm);
+
+    useEffect(() => {
+      if (isLoggedin && loggedInViaForm) {
+        navigate("/feed");
+        dispatch(setLoggedInViaForm(false)); 
+      }
+    }, [isLoggedin, loggedInViaForm, navigate, dispatch]);
   
     // Clears all form fields
     function clearForm() {
@@ -62,11 +69,23 @@ const Login = () => {
           password: password,
         });
         const token = res.data.access;
-        navigate("/feed"); 
+
         dispatch(userLogin(token));
         window.localStorage.setItem("token", token);
-        const user = await getMyUserDatas(token)
-        dispatch(userObject(user.data))
+        
+        const user = await getMyUserDatas(token);
+        dispatch(userObject(user));
+    
+        // Indicate that login is made through the form
+        dispatch(setLoggedInViaForm(true));
+    
+        navigate("/feed"); 
+
+        // navigate("/feed"); 
+        // dispatch(userLogin(token));
+        // window.localStorage.setItem("token", token);
+        // const user = await getMyUserDatas(token)
+        // dispatch(userObject(user.data))
       } catch (errors) {
         setError(errors.response.data.detail);
       } finally {
