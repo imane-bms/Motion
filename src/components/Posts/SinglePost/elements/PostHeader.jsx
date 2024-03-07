@@ -1,15 +1,16 @@
-import testUser from "../../../../assets/images/users/alber.png";
-import { PostHeaderContainer } from "../styles";
+import formatDate from "./renderDate";
+import { PostHeaderContainer, PostUserAvatar } from "../styles";
 
-function PostHeader() {
+// eslint-disable-next-line react/prop-types
+function PostHeader({ avatar, name, time }) {
   return (
     <PostHeaderContainer>
       <div>
-        <img src={testUser} alt="testUser" />
+        <PostUserAvatar src={avatar} alt="testUser" />
       </div>
       <div>
-        <h4>User Name</h4>
-        <p>time</p>
+        <h4>{name}</h4>
+        {formatDate(time)}
       </div>
     </PostHeaderContainer>
   );

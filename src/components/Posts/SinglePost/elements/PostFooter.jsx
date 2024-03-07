@@ -1,8 +1,9 @@
-import { NumberOfLikes, PostButton, PostFooterContainer } from "../styles";
 import share from "../../../../assets/svgs/share.svg";
 import heart from "../../../../assets/svgs/heart.svg";
+import { NumberOfLikes, PostButton, PostFooterContainer } from "../styles";
 
-function PostFooter() {
+// eslint-disable-next-line react/prop-types
+function PostFooter({ likes }) {
   return (
     <PostFooterContainer>
       <PostButton>
@@ -12,7 +13,7 @@ function PostFooter() {
         <img src={share} /> Share
       </PostButton>
 
-      <NumberOfLikes>2 likes</NumberOfLikes>
+      <NumberOfLikes>{likes} likes</NumberOfLikes>
     </PostFooterContainer>
   );
 }

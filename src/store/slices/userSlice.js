@@ -17,12 +17,16 @@ const UserSlice = createSlice({
       console.log(state.user);
     },
 
+    setLoggedInViaForm: (state, action) => {
+      state.loggedInViaForm = action.payload;
+    },
+
     setAvatar: (state, action) => {
       state.avatar = action.payload;
     },
   },
 });
 
-export const { userLogin, userLogout, userObject, setAvatar } =
+export const { userLogin, userLogout, userObject, setLoggedInViaForm, setAvatar } =
   UserSlice.actions;
 export default UserSlice.reducer;
