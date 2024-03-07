@@ -17,7 +17,7 @@ function PostsList({ canAddPosts = true }) {
     const loadPosts = async () => {
       const data = await fetchPosts({ limit: 12, offset: 0 });
       setPosts(data.results);
-      console.log(data.results);
+      // console.log(data.results);
     };
 
     loadPosts();

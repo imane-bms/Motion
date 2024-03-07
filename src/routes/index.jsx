@@ -15,9 +15,9 @@ const Router = () => {
         <Route element={<Layout />}>
           <Route element={<ProtectedRoutes />}>
             <Route path="feed" element={<Feed />} />
-            <Route path="user/me" element={<UserProfilePage />} />
-            <Route path="user/me/edit" element={<UserEditPage />} />
+            <Route path="user/edit" element={<UserEditPage />} />
             <Route path="user/:userID" element={<UserProfilePage />} />
+            <Route path="user/me" element={<UserProfilePage />} />
           </Route>
         </Route>
         <Route path="*" element={<NotFound />} />

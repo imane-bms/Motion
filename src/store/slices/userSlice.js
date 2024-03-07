@@ -14,7 +14,7 @@ const UserSlice = createSlice({
 
     userObject: (state, action) => {
       state.user = action.payload;
-      console.log(state.user);
+      // console.log(state.user);
     },
 
     setLoggedInViaForm: (state, action) => {
@@ -27,6 +27,11 @@ const UserSlice = createSlice({
   },
 });
 
-export const { userLogin, userLogout, userObject, setLoggedInViaForm, setAvatar } =
-  UserSlice.actions;
+export const {
+  userLogin,
+  userLogout,
+  userObject,
+  setLoggedInViaForm,
+  setAvatar,
+} = UserSlice.actions;
 export default UserSlice.reducer;

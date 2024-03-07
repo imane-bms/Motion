@@ -1,7 +1,8 @@
-import { useParams } from "react-router-dom";
 import { Cover, UserSectionContainer } from "./styles";
-import PostsList from "../../components/Posts/PostsList";
-import UserInfo from "../../components/UserInfo";
+
+import PostsList from "../Posts/PostsList";
+import UserInfo from "../UserInfo";
+import { useParams } from "react-router-dom";
 
 const UserProfilePage = () => {
   //extract user if from the url
@@ -14,7 +15,7 @@ const UserProfilePage = () => {
     <>
       <Cover />
       <UserSectionContainer>
-        {userID !== undefined ? (
+        {userID !== "me" ? (
           <UserInfo userID={userID} />
         ) : (
           <UserInfo userID={"me"} />

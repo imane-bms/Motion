@@ -1,7 +1,7 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { SimpleButton } from "../../styles";
 
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import StatsCard from "../Stats";
 import {
   ContactsDiv,
@@ -15,38 +15,52 @@ import {
 } from "./styles";
 
 import jennifer from "../../assets/images/users/jennifer.png";
-import UserAxios from "../../axios";
+
 import { useEffect, useState } from "react";
 import { UserInfoContainer } from "../../routes/UserProfilePage/styles";
+import { selectProfile, updateprofile } from "../../store/slices/profileSlice";
+import { getMyUserDatas, getUserDatas } from "../../axios";
+
 // still working on it
 const UserInfo = ({ userID }) => {
-  //store current user's data
+  const [isLoggedInUser, setIsLoggedInUser] = useState(null);
   const [currentUserData, setCurrentUserData] = useState([]);
+  useEffect(() => {
+    userID === "me" ? setIsLoggedInUser(true) : setIsLoggedInUser(false);
+  }, [userID]);
+
+  // ------------------------------------ fetch user data based on isLoggedIn ----------------------------------------
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const data = isLoggedInUser
+          ? await getMyUserDatas()
+          : await getUserDatas(userID);
+        // console.log(data);
+        setCurrentUserData(data);
+
+        dispatch(updateprofile(data));
+        // dispatch this userData to  Redux store here if needed??
+      } catch (error) {
+        console.error("Error fetching user data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  // -----------------------------------------Get Data from the store afetr editing --------------------------------------
+  const { ...userData } = useSelector(selectProfile);
+
+  //assign an empty array if currentUserData.things_user_likes is undefined
+  const hobbies = currentUserData.things_user_likes || [];
+  // const hobbies = currentUserData.things_user_likes;
+
   //to check if the user is the one logged in
-  const [isCurrentUser, setIsCurrentUser] = useState(false);
-
+  // const [isCurrentUser, setIsCurrentUser] = useState(false);
+  const dispatch = useDispatch();
   const navigate = useNavigate();
-  //fetch the data according to user id
-  const getUserData = async () => {
-    try {
-      const response = await UserAxios.get(`/users/${userID}`);
-      const userData = response.data;
-      setCurrentUserData(userData);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-  useEffect(() => {
-    getUserData();
-  }, [userID]);
-
-  // check if the current userID matches the userID in the url
-
-  useEffect(() => {
-    // get the id of the current user (loggedin) from the auth
-    const loggedInUserID = currentUserData.id;
-    setIsCurrentUser(loggedInUserID === userID);
-  }, [userID]);
 
   const statistics = useSelector((state) => [
     { title: "Posts", value: state.stats.posts },
@@ -56,59 +70,28 @@ const UserInfo = ({ userID }) => {
     { title: "Following", value: state.stats.following },
   ]);
 
-  const hobbies = [
-    { id: 1, name: "hiking" },
-    { id: 2, name: "coding" },
-    { id: 3, name: "reading" },
-    { id: 4, name: "gardening" },
-    { id: 5, name: "cooking" },
-    { id: 6, name: "gaming" },
-    { id: 7, name: "painting" },
-  ];
-  //hhh
   //----- need to think how to update hobbies when user edits them------
   // const hobbies = currentUserData.things_user_likes;
 
   const handleEditing = () => {
-    navigate("/user/me/edit");
+    navigate("/user/edit");
   };
-
-  // function to fetch user data from API
-  const getUserMeData = async (token) => {
-    try {
-      const response = await UserAxios.get("/users/me/", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-      const userData = response.data;
-      setCurrentUserData(userData);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  useEffect(() => {
-    getUserMeData(
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA5OTAwODA4LCJpYXQiOjE3MDk3MjgwMDgsImp0aSI6ImE2NGRkOTVmZTUzNTQxZTY4NmMyZDkzMTBjY2ZjYThkIiwidXNlcl9pZCI6MzM4Nn0.cIn4WsmKWB8yl425xgW5GFGAJLK_k9lyyYzJMpMFdY4"
-    );
-  }, []);
-  useEffect(() => {
-    console.log(currentUserData);
-  }, [currentUserData]);
 
   return (
     <UserInfoContainer>
       <UserInfoFaceBlock>
-        <Image src={jennifer} alt="avatar" />
+        <Image
+          src={isLoggedInUser ? jennifer : currentUserData.avatar}
+          alt="avatar"
+        />
         <h2>
           {currentUserData.first_name} {currentUserData.last_name}
         </h2>
-        <p>{currentUserData.location}</p>
+        <p>{userData.location}</p>
         {/* Render the "Edit Profile" button only if canEdit is true */}
-        {/* {canEdit && ( */}
-        <SimpleButton onClick={handleEditing}> EDIT PROFILE</SimpleButton>
-        {/*  )} */}
+        {isLoggedInUser && (
+          <SimpleButton onClick={handleEditing}> EDIT PROFILE</SimpleButton>
+        )}
       </UserInfoFaceBlock>
 
       <UserInfoDetailsBlock>
@@ -131,9 +114,13 @@ const UserInfo = ({ userID }) => {
           <div>
             <h4>Things I Like </h4>
             <HobbiesDiv>
-              {hobbies.map((hobby) => (
-                <Hobbie key={hobby.id}>{hobby.name}</Hobbie>
-              ))}
+              {hobbies.length > 0 ? (
+                hobbies.map((hobby, index) => (
+                  <Hobbie key={index}>{hobby}</Hobbie>
+                ))
+              ) : (
+                <p></p>
+              )}
             </HobbiesDiv>
           </div>
         </UpperRightDiv>

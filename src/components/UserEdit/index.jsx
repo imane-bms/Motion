@@ -25,12 +25,15 @@ import {
 import jennifer from "../../assets/images/users/jennifer.png";
 import { useDispatch, useSelector } from "react-redux";
 import { selectProfile, updateprofile } from "../../store/slices/profileSlice";
+import { useNavigate } from "react-router-dom";
+import { updateUserData } from "../../axios";
 
 const UserEdit = () => {
   const dispatch = useDispatch();
-  const user = useSelector(selectProfile);
+  const navigate = useNavigate();
+  const userData = useSelector(selectProfile);
   // track changes made by the user :
-  const [formData, setFormData] = useState(user);
+  const [formData, setFormData] = useState(userData);
 
   const inputHandler = (e) => {
     const { id, value } = e.target;
@@ -40,7 +43,8 @@ const UserEdit = () => {
     }));
   };
 
-  const [hobbies, setHobbies] = useState(user.hobbies || []);
+  const [hobbies, setHobbies] = useState(userData.things_user_likes || []);
+  // const hobbies = formData.things_user_likes || [];
   // to control/hold the current hobby being typed
   const [newHobby, setNewHobby] = useState("");
 
@@ -52,7 +56,7 @@ const UserEdit = () => {
       const updatedHobbies = [...hobbies, newHobby]; // add the new hobby to the hobbies list
       setFormData((prevData) => ({
         ...prevData,
-        hobbies: updatedHobbies,
+        things_user_likes: updatedHobbies,
       }));
       setHobbies(updatedHobbies); // update locally
       setNewHobby(""); // clear the input filed after adding the new hobby
@@ -64,7 +68,7 @@ const UserEdit = () => {
     updatedHobbies.splice(index, 1);
     setFormData((prevData) => ({
       ...prevData,
-      hobbies: updatedHobbies,
+      things_user_likes: updatedHobbies,
     }));
     setHobbies(updatedHobbies); // update locally
   };
@@ -85,8 +89,19 @@ const UserEdit = () => {
     }
   };
   const handleRemoveImage = () => setImageSrc(null);
-  const saveChanges = () => {
-    dispatch(updateprofile(formData)); // dispatch changed to redux store only when save btn is clicked
+
+  const saveChanges = async () => {
+    try {
+      // console.log(formData);
+      // send PATCH req to update user data in the API
+      await updateUserData(formData);
+      // dispatch changed to the store
+      dispatch(updateprofile(formData));
+      // navigate to userpage
+      navigate("/user/me");
+    } catch (error) {
+      console.log("Error updating the user data", error);
+    }
   };
 
   return (
@@ -124,21 +139,21 @@ const UserEdit = () => {
       <RightDivContainer>
         <FormGrid>
           <StyledGridItem>
-            <label htmlFor="firstName">First Name</label>
+            <label htmlFor="first_name">First Name</label>
             <Input
               type="text"
-              id="firstName"
-              value={formData.firstName}
+              id="first_name"
+              value={formData.first_name}
               required
               onChange={inputHandler}
             />
           </StyledGridItem>
           <StyledGridItem>
-            <label htmlFor="lastName">Last Name </label>
+            <label htmlFor="last_name">Last Name </label>
             <Input
               type="text"
-              id="lastName"
-              value={formData.lastName}
+              id="last_name"
+              value={formData.last_name}
               required
               onChange={inputHandler}
             />
@@ -181,21 +196,21 @@ const UserEdit = () => {
             </CustomSelect>
           </StyledGridItem>
           <StyledGridItem>
-            <label htmlFor="phone">Phone </label>
+            <label htmlFor="phone_number">Phone </label>
             <NumberInput
               type="number"
-              id="phone"
-              value={formData.phone}
+              id="phone_number"
+              value={formData.phone_number}
               required
               onChange={inputHandler}
             />
           </StyledGridItem>
           <TallerGridItem>
-            <label htmlFor="about">About</label>
+            <label htmlFor="about_me">About</label>
             <Input
               type="text"
-              id="about"
-              value={formData.about}
+              id="about_me"
+              value={formData.about_me}
               required
               onChange={inputHandler}
             />

@@ -32,14 +32,12 @@ export const UpperRightDiv = styled.div`
   display: grid;
   grid-template-columns: 3fr 2fr;
   gap: 2rem;
-
   padding: 2rem 3rem 1rem 3rem;
 
-  @media (max-width: 768px) { 
+  @media (max-width: 768px) {
     grid-template-columns: 1fr;
   }
 `;
-
 
 export const ContactsDiv = styled.div`
   width: 100%;
@@ -51,7 +49,7 @@ export const ContactsDiv = styled.div`
   padding: 2rem 0 0 0;
 `;
 
-export const HobbiesDiv= styled.section`
+export const HobbiesDiv = styled.section`
   margin-top: 1rem;
   display: flex;
   flex-wrap: wrap;
@@ -82,7 +80,6 @@ export const Stats = styled.div`
 
   border-top: 1px rgb(222, 222, 222) solid;
 `;
-
 
 // export const LeftFlexColDiv = styled.div`
 //   display: flex;
